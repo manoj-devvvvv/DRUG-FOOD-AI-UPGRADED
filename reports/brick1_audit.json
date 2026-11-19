@@ -1,0 +1,209 @@
+{
+  "drugs": {
+    "shape": [
+      1516,
+      17
+    ],
+    "columns": [
+      "FHDI_Drug_ID",
+      "Drug_Name",
+      "Synonyms",
+      "Drug_Type",
+      "Company",
+      "Summary",
+      "Formula",
+      "Canonical_SMILES",
+      "InChI",
+      "InChIKey",
+      "TTD_ID",
+      "DrugBank_ID",
+      "PubChem_Compound_ID",
+      "PubChem_Substance_ID",
+      "ChEBI_ID",
+      "CAS_Number",
+      "ADReCS_Drug_ID"
+    ],
+    "missing": {
+      "FHDI_Drug_ID": 0,
+      "Drug_Name": 9,
+      "Synonyms": 54,
+      "Drug_Type": 126,
+      "Company": 486,
+      "Summary": 38,
+      "Formula": 79,
+      "Canonical_SMILES": 79,
+      "InChI": 81,
+      "InChIKey": 81,
+      "TTD_ID": 174,
+      "DrugBank_ID": 25,
+      "PubChem_Compound_ID": 123,
+      "PubChem_Substance_ID": 348,
+      "ChEBI_ID": 359,
+      "CAS_Number": 87,
+      "ADReCS_Drug_ID": 550
+    },
+    "unique_drugs": 1516,
+    "has_smiles": 1437,
+    "has_inchikey": 1435,
+    "has_drugbank_id": 1491
+  },
+  "interactions": {
+    "shape": [
+      23950,
+      17
+    ],
+    "columns": [
+      "Drug_ID",
+      "Drug_Name",
+      "Food_Herb_ID",
+      "Food_Herb_Name",
+      "Component",
+      "Note",
+      "Result",
+      "Experimental_Species",
+      "Experimental_Design",
+      "Effect",
+      "Potential_Target",
+      "Target_ID",
+      "Conclusion",
+      "PMID",
+      "Reference",
+      "DOI",
+      "Relationship_classification"
+    ],
+    "unique_drugs": 1507,
+    "unique_food_herb_ids": 1336,
+    "unique_components": 253,
+    "effect_counts": {
+      "Possible": 17827,
+      "No Effect": 2374,
+      "Positive": 1915,
+      "Negative": 1437,
+      "Harmful": 393,
+      "possible": 4
+    },
+    "relationship_counts": {
+      "HFDI": 17670,
+      "Drugbank": 2784,
+      "FDI-Package Insert": 1666,
+      "Dietary Effect-Package Insert": 1009,
+      "Dietary effects": 821
+    },
+    "notes_nonnull": 3559,
+    "conclusion_nonnull": 23950,
+    "drug_overlap_with_drug_table": 23950
+  },
+  "foods": {
+    "shape": [
+      838492,
+      11
+    ],
+    "columns": [
+      "food_id",
+      "id",
+      "name",
+      "moldb_smiles",
+      "SMILES",
+      "Food_Name",
+      "orig_food_common_name",
+      "kingdom",
+      "superklass",
+      "klass",
+      "subklass"
+    ],
+    "unique_food_ids": 177,
+    "unique_compounds": 13282,
+    "unique_food_names": 177,
+    "moldb_smiles_equals_SMILES": 0,
+    "note": "Header misalignment detected: the column named moldb_smiles holds InChIKeys and the column named SMILES holds the actual structures. Use SMILES.",
+    "sample_row": {
+      "food_id": "148",
+      "id": "1131",
+      "name": "Sucrose",
+      "moldb_smiles": "CZMRCDWAGMRECN-UHFFFAOYSA-N",
+      "SMILES": "OCC1OC(CO)(OC2OC(CO)C(O)C(O)C2O)C(O)C1O",
+      "Food_Name": "Almond",
+      "orig_food_common_name": "Almond, raw",
+      "kingdom": "Organic compounds",
+      "superklass": "Organooxygen compounds",
+      "klass": "Carbohydrates and carbohydrate conjugates",
+      "subklass": "Glycosyl compounds"
+    }
+  },
+  "join": {
+    "food_herb_names_in_food_table": 1744,
+    "component_names_in_compound_table": 15321
+  },
+  "pubchem_label_probe": [
+    {
+      "cid": 3394,
+      "drug": "Flurbiprofen",
+      "sections": [
+        "/Drug and Medication Information/Drug-Food Interactions"
+      ],
+      "n_strings": 2,
+      "sample": "Avoid alcohol."
+    },
+    {
+      "cid": 54454,
+      "drug": "Simvastatin",
+      "sections": [
+        "/Drug and Medication Information/Drug-Food Interactions"
+      ],
+      "n_strings": 1,
+      "sample": "Avoid grapefruit products. Co-administration with grapefruit products may increase the risk for adverse effects such as myalgia."
+    },
+    {
+      "cid": 4192,
+      "drug": "Midazolam",
+      "sections": [
+        "/Drug and Medication Information/Drug-Food Interactions"
+      ],
+      "n_strings": 2,
+      "sample": "Avoid alcohol. Midazolam may make your sleepiness or dizziness worse."
+    },
+    {
+      "cid": 71353,
+      "drug": "Dapoxetine",
+      "sections": [],
+      "n_strings": 0,
+      "sample": ""
+    },
+    {
+      "cid": 5284373,
+      "drug": "Cyclosporine",
+      "sections": [
+        "/Drug and Medication Information/Drug-Food Interactions"
+      ],
+      "n_strings": 4,
+      "sample": "Avoid grapefruit products."
+    },
+    {
+      "cid": 68911,
+      "drug": "Artemether",
+      "sections": [
+        "/Drug and Medication Information/Drug-Food Interactions"
+      ],
+      "n_strings": 2,
+      "sample": "Avoid grapefruit products."
+    },
+    {
+      "cid": 4091,
+      "drug": "Metformin",
+      "sections": [
+        "/Drug and Medication Information/Drug-Food Interactions"
+      ],
+      "n_strings": 2,
+      "sample": "Avoid alcohol."
+    },
+    {
+      "cid": 6918837,
+      "drug": "Panobinostat",
+      "sections": [
+        "/Drug and Medication Information/Drug-Food Interactions"
+      ],
+      "n_strings": 5,
+      "sample": "Avoid grapefruit products. Grapefruit inhibits CYP3A4 metabolism, which may increase the serum concentration of panobinostat."
+    }
+  ]
+}

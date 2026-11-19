@@ -1,0 +1,5 @@
+mean_fit_time,std_fit_time,mean_score_time,std_score_time,param_mlp__learning_rate_init,param_mlp__hidden_layer_sizes,param_mlp__alpha,params,split0_test_score,mean_test_score,std_test_score,rank_test_score,model
+1.4227917194366455,0.0,0.007612705230712891,0.0,0.001,"(128,)",0.001,"{'mlp__learning_rate_init': 0.001, 'mlp__hidden_layer_sizes': (128,), 'mlp__alpha': 0.001}",0.3606964594717473,0.3606964594717473,0.0,2,MLP
+1.5018551349639893,0.0,0.007002115249633789,0.0,0.01,"(64, 32)",0.001,"{'mlp__learning_rate_init': 0.01, 'mlp__hidden_layer_sizes': (64, 32), 'mlp__alpha': 0.001}",0.3704191686193364,0.3704191686193364,0.0,1,MLP
+1.141993761062622,0.0,0.008597612380981445,0.0,0.001,"(32, 16)",0.0001,"{'mlp__learning_rate_init': 0.001, 'mlp__hidden_layer_sizes': (32, 16), 'mlp__alpha': 0.0001}",0.34769236793246194,0.34769236793246194,0.0,4,MLP
+1.2363560199737549,0.0,0.009456872940063477,0.0,0.001,"(64, 32)",0.001,"{'mlp__learning_rate_init': 0.001, 'mlp__hidden_layer_sizes': (64, 32), 'mlp__alpha': 0.001}",0.3530875423143221,0.3530875423143221,0.0,3,MLP

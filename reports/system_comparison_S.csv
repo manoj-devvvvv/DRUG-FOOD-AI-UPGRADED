@@ -1,0 +1,5 @@
+path,coverage,accuracy_on_covered,accuracy_on_all_with_abstention_as_wrong,note
+rule_only,0.0,,0.0,Curated rules; no coverage for pairs outside the rule set.
+evidence_lookup,0.46829640947288004,1.0,0.46829640947288004,LABEL ECHO: the lookup returns the dataset label for the same pair. Not a predictive model and excluded from model comparison.
+ml_only,1.0,0.726890756302521,0.726890756302521,"Deployed model, no rules and no evidence lookup."
+hybrid_rule_then_ml,1.0,0.726890756302521,0.726890756302521,Rules override ML when matched; evidence lookup is not used.

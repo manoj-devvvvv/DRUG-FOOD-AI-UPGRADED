@@ -1,0 +1,7 @@
+﻿step,count,method,parameter
+all pair features,3780,"60 MOE descriptors -> 3,600 cross products + 60 sums + 60 abs diffs + 60 ratios",
+variance filter,3521,VarianceThreshold,threshold = 0.8
+correlation filter,1126,Pearson |r| pruning,|r| < 0.75
+Lasso,174,L1 Lasso on standardized features,alpha = 0.01
+RFECV,89,Recursive feature elimination with cross-validation,5-fold
+final RFE,18,Recursive feature elimination to the target size,n_features = 18

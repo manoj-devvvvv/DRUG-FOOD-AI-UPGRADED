@@ -1,0 +1,19 @@
+name,term,drug_descriptor,food_descriptor,drug_descriptor_meaning,food_descriptor_meaning,selected_in_full_run,stability_hits
+MRVSA6*EstateVSA6,product,MRVSA6,EstateVSA6,surface-area contribution to molar refractivity,surface-area contribution to electrotopological state,True,2
+PEOEVSA5+PEOEVSA5,sum,PEOEVSA5,PEOEVSA5,surface-area contribution to Gasteiger partial charge,surface-area contribution to Gasteiger partial charge,True,3
+PEOEVSA6+PEOEVSA6,sum,PEOEVSA6,PEOEVSA6,surface-area contribution to Gasteiger partial charge,surface-area contribution to Gasteiger partial charge,True,2
+PEOEVSA7+PEOEVSA7,sum,PEOEVSA7,PEOEVSA7,surface-area contribution to Gasteiger partial charge,surface-area contribution to Gasteiger partial charge,True,2
+VSAEstate6+VSAEstate6,sum,VSAEstate6,VSAEstate6,VSA-binned electrotopological state contribution,VSA-binned electrotopological state contribution,True,3
+slogPVSA1/slogPVSA1,ratio,slogPVSA1,slogPVSA1,van der Waals surface-area contribution to SlogP (hydrophobicity),van der Waals surface-area contribution to SlogP (hydrophobicity),True,3
+MRVSA5/MRVSA5,ratio,MRVSA5,MRVSA5,surface-area contribution to molar refractivity,surface-area contribution to molar refractivity,True,3
+MRVSA9/MRVSA9,ratio,MRVSA9,MRVSA9,surface-area contribution to molar refractivity,surface-area contribution to molar refractivity,True,2
+slogPVSA9*PEOEVSA8,product,slogPVSA9,PEOEVSA8,van der Waals surface-area contribution to SlogP (hydrophobicity),surface-area contribution to Gasteiger partial charge,True,1
+MRVSA3*PEOEVSA8,product,MRVSA3,PEOEVSA8,surface-area contribution to molar refractivity,surface-area contribution to Gasteiger partial charge,True,0
+MRVSA5*PEOEVSA10,product,MRVSA5,PEOEVSA10,surface-area contribution to molar refractivity,surface-area contribution to Gasteiger partial charge,True,0
+slogPVSA5+slogPVSA5,sum,slogPVSA5,slogPVSA5,van der Waals surface-area contribution to SlogP (hydrophobicity),van der Waals surface-area contribution to SlogP (hydrophobicity),True,1
+slogPVSA7+slogPVSA7,sum,slogPVSA7,slogPVSA7,van der Waals surface-area contribution to SlogP (hydrophobicity),van der Waals surface-area contribution to SlogP (hydrophobicity),True,0
+slogPVSA9+slogPVSA9,sum,slogPVSA9,slogPVSA9,van der Waals surface-area contribution to SlogP (hydrophobicity),van der Waals surface-area contribution to SlogP (hydrophobicity),True,0
+slogPVSA11+slogPVSA11,sum,slogPVSA11,slogPVSA11,van der Waals surface-area contribution to SlogP (hydrophobicity),van der Waals surface-area contribution to SlogP (hydrophobicity),True,1
+VSAEstate2+VSAEstate2,sum,VSAEstate2,VSAEstate2,VSA-binned electrotopological state contribution,VSA-binned electrotopological state contribution,True,0
+abs(MRVSA5-MRVSA5),abs_diff,MRVSA5,MRVSA5,surface-area contribution to molar refractivity,surface-area contribution to molar refractivity,True,0
+abs(MRVSA6-MRVSA6),abs_diff,MRVSA6,MRVSA6,surface-area contribution to molar refractivity,surface-area contribution to molar refractivity,True,1

@@ -1,0 +1,4 @@
+﻿split,partition,class,label,support,roc_auc_ovr,pr_auc
+G,test,0,Avoid,640,0.6456075423407482,0.42226770349289533
+G,test,1,Beneficial,1,0.9988536492166603,0.25
+G,test,2,Non-significant,1977,0.6564284119164464,0.8171207464319816

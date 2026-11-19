@@ -1,0 +1,28 @@
+{
+  "directory": "data\\processed\\csv",
+  "files": {
+    "drug_cleaned.csv": {
+      "rows": 1359,
+      "source": "data/interim/drugs_clean.parquet"
+    },
+    "food_cleaned.csv": {
+      "rows": 5022,
+      "source": "data/interim/foods_clean.parquet"
+    },
+    "pairs.csv": {
+      "rows": 21042,
+      "source": "data/processed/splits_S.parquet + names"
+    },
+    "features_generation.csv": {
+      "rows": 6236,
+      "columns": 63,
+      "source": "data/interim/{drug,food}_moe.parquet"
+    },
+    "feature_extraction.csv": {
+      "rows": 20947,
+      "columns": 18,
+      "source": "splits_S.parquet + selected_features_S.json",
+      "note": "Selected 18 features only; the full 3,780-column matrix is not exported."
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "loaded": 1516,
+  "with_drugbank_id": 1491,
+  "db_id_recovered_from_synonyms": 0,
+  "parse_failures_or_empty": 79,
+  "parsed": 1437,
+  "duplicate_inchikey14_removed": 78,
+  "final_drugs": 1359,
+  "final_with_db_id": 1350
+}

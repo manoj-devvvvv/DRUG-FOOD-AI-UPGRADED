@@ -1,0 +1,338 @@
+{
+  "mode_p_pairs": 407699,
+  "mode_s_pairs": 21042,
+  "mode_p_class_counts": {
+    "0": 229499,
+    "1": 65100,
+    "2": 113100
+  },
+  "mode_s_class_counts": {
+    "0": 4898,
+    "1": 24,
+    "2": 16120
+  },
+  "mode_s_weak_pairs": 11517,
+  "per_drug_class_counts": {
+    "0": 765,
+    "1": 217,
+    "2": 377
+  },
+  "interaction_rows_mapped_mode_s": 6974,
+  "mode_s_mapping": {
+    "marker_rows": 707,
+    "specific_food_rows": 676,
+    "targets_total": 19157,
+    "mean_targets_per_row": 2.747
+  },
+  "label_source_counts": {
+    "structured": 13226,
+    "text_rule": 10081
+  },
+  "corrected_effect_distribution": {
+    "harmful": {
+      "0": 392,
+      "1": 0,
+      "2": 0
+    },
+    "negative": {
+      "0": 1406,
+      "1": 0,
+      "2": 0
+    },
+    "no effect": {
+      "0": 0,
+      "1": 0,
+      "2": 2324
+    },
+    "positive": {
+      "0": 1084,
+      "1": 646,
+      "2": 92
+    },
+    "possible": {
+      "0": 8271,
+      "1": 278,
+      "2": 8814
+    }
+  },
+  "holdout_pairs": [
+    [
+      "D00115",
+      753
+    ],
+    [
+      "D00241",
+      753
+    ],
+    [
+      "D00245",
+      2542
+    ],
+    [
+      "D00245",
+      11869
+    ],
+    [
+      "D00245",
+      11942
+    ],
+    [
+      "D00263",
+      11942
+    ],
+    [
+      "D00266",
+      753
+    ],
+    [
+      "D00572",
+      2542
+    ],
+    [
+      "D00572",
+      11869
+    ],
+    [
+      "D00572",
+      11942
+    ],
+    [
+      "D00688",
+      753
+    ],
+    [
+      "D00828",
+      2332
+    ],
+    [
+      "D00828",
+      12606
+    ],
+    [
+      "D01209",
+      3514
+    ],
+    [
+      "D01217",
+      2542
+    ],
+    [
+      "D01217",
+      2571
+    ],
+    [
+      "D01217",
+      2602
+    ],
+    [
+      "D01217",
+      3492
+    ],
+    [
+      "D01217",
+      4902
+    ],
+    [
+      "D01217",
+      11869
+    ],
+    [
+      "D01217",
+      11942
+    ],
+    [
+      "D01217",
+      12389
+    ],
+    [
+      "D01217",
+      125170
+    ]
+  ],
+  "case_study_locations": [
+    {
+      "drug": "tetracycline",
+      "compound": "calcium",
+      "drug_ids": [
+        "D01209"
+      ],
+      "compound_ids": [
+        3514
+      ],
+      "supported": true
+    },
+    {
+      "drug": "methotrexate",
+      "compound": "ethanol",
+      "drug_ids": [
+        "D00688"
+      ],
+      "compound_ids": [
+        753
+      ],
+      "supported": true
+    },
+    {
+      "drug": "diazepam",
+      "compound": "ethanol",
+      "drug_ids": [
+        "D00115"
+      ],
+      "compound_ids": [
+        753
+      ],
+      "supported": true
+    },
+    {
+      "drug": "nitroglycerin",
+      "compound": "ethanol",
+      "drug_ids": [
+        "D00266"
+      ],
+      "compound_ids": [
+        753
+      ],
+      "supported": true
+    },
+    {
+      "drug": "digoxin",
+      "compound": "hyperforin",
+      "drug_ids": [
+        "D00828"
+      ],
+      "compound_ids": [
+        2332
+      ],
+      "supported": true
+    },
+    {
+      "drug": "nisoldipine",
+      "compound": "bergamottin",
+      "drug_ids": [
+        "D00263"
+      ],
+      "compound_ids": [
+        11942
+      ],
+      "supported": true
+    },
+    {
+      "drug": "midazolam",
+      "compound": "furanocoumarin",
+      "drug_ids": [
+        "D00245"
+      ],
+      "compound_ids": [
+        11942
+      ],
+      "supported": true
+    },
+    {
+      "drug": "warfarin",
+      "compound": "vitamin k1 2,3 epoxide",
+      "drug_ids": [
+        "D01217"
+      ],
+      "compound_ids": [
+        125170
+      ],
+      "supported": true
+    },
+    {
+      "drug": "warfarin",
+      "compound": "dimethyl disulfide",
+      "drug_ids": [
+        "D01217"
+      ],
+      "compound_ids": [
+        3492
+      ],
+      "supported": true
+    }
+  ],
+  "clinical_probe_locations": [
+    {
+      "drug": "warfarin",
+      "food": "grapefruit",
+      "drug_ids": [
+        "D01217"
+      ],
+      "compound_ids": [
+        2542,
+        11869,
+        11942
+      ]
+    },
+    {
+      "drug": "simvastatin",
+      "food": "grapefruit",
+      "drug_ids": [
+        "D00572"
+      ],
+      "compound_ids": [
+        2542,
+        11869,
+        11942
+      ]
+    },
+    {
+      "drug": "midazolam",
+      "food": "grapefruit",
+      "drug_ids": [
+        "D00245"
+      ],
+      "compound_ids": [
+        2542,
+        11869,
+        11942
+      ]
+    },
+    {
+      "drug": "metronidazole",
+      "food": "alcohol",
+      "drug_ids": [
+        "D00241"
+      ],
+      "compound_ids": [
+        753
+      ]
+    },
+    {
+      "drug": "warfarin",
+      "food": "cranberry",
+      "drug_ids": [
+        "D01217"
+      ],
+      "compound_ids": [
+        2571,
+        2602,
+        4902,
+        12389
+      ]
+    },
+    {
+      "drug": "digoxin",
+      "food": "st john's wort",
+      "drug_ids": [
+        "D00828"
+      ],
+      "compound_ids": [
+        2332,
+        12606
+      ]
+    }
+  ],
+  "sentence_audit": {
+    "sampled": 100,
+    "possible_rows": 76,
+    "confirmed_rows": 24,
+    "rule_fired_all": 63,
+    "rule_coverage_all": 0.63,
+    "confirmed_rule_fired": 15,
+    "confirmed_agreement": 0.6,
+    "possible_rule_fired": 48,
+    "possible_rule_coverage": 0.631578947368421,
+    "raw_agreement_vs_effect_on_fired": 0.14285714285714285,
+    "note": "Confirmed rows test the rules against experimental annotations. Possible rows are labelled from the text rules by design, so their agreement is circular; coverage is reported instead. The CSV in reports/ has an empty manual_label column for the human 100-sentence audit."
+  }
+}

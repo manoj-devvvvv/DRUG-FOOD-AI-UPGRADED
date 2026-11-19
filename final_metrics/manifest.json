@@ -1,0 +1,336 @@
+{
+  "generated": "2026-11-18T20:24:12",
+  "model_version": "single-2026-11-16",
+  "model_sha256_prefix": "c8d4f9dadf2d63b2",
+  "files": {
+    "metrics_by_split.csv": {
+      "rows": 8,
+      "columns": 17,
+      "bytes": 2298,
+      "description": "Every aggregate metric for R/G/F/D on validation and test.",
+      "sources": [
+        "reports/generalization_S.json"
+      ]
+    },
+    "per_class_metrics.csv": {
+      "rows": 24,
+      "columns": 8,
+      "bytes": 1861,
+      "description": "Per-class precision, recall, F1, and support.",
+      "sources": [
+        "reports/generalization_S.json"
+      ]
+    },
+    "confusion_matrices.csv": {
+      "rows": 8,
+      "columns": 12,
+      "bytes": 650,
+      "description": "Exact 3x3 confusion matrices (rows=true, columns=predicted).",
+      "sources": [
+        "reports/generalization_S.json"
+      ]
+    },
+    "label_distribution.csv": {
+      "rows": 12,
+      "columns": 7,
+      "bytes": 477,
+      "description": "Label distribution for every split and partition.",
+      "sources": [
+        "reports/generalization_S.json"
+      ]
+    },
+    "calibration_summary.csv": {
+      "rows": 4,
+      "columns": 7,
+      "bytes": 507,
+      "description": "Raw and calibrated NLL, Brier, ECE, and mean confidence.",
+      "sources": [
+        "reports/calibration_S.json"
+      ]
+    },
+    "reliability_bins.csv": {
+      "rows": 39,
+      "columns": 7,
+      "bytes": 1806,
+      "description": "Reliability-diagram points before and after temperature scaling.",
+      "sources": [
+        "reports/calibration_S.json"
+      ]
+    },
+    "threshold_curve.csv": {
+      "rows": 56,
+      "columns": 3,
+      "bytes": 2517,
+      "description": "Validation coverage and accepted error for every acceptance threshold.",
+      "sources": [
+        "reports/calibration_S.json"
+      ]
+    },
+    "selective_prediction.csv": {
+      "rows": 1,
+      "columns": 8,
+      "bytes": 191,
+      "description": "Selective-prediction coverage and accuracy at the 0.77 acceptance threshold.",
+      "sources": [
+        "reports/calibration_S.json",
+        "reports/single_model_evaluation.json"
+      ]
+    },
+    "roc_pr_auc.csv": {
+      "rows": 3,
+      "columns": 7,
+      "bytes": 234,
+      "description": "One-vs-rest ROC AUC and PR AUC per class on deployed-model raw test probabilities.",
+      "sources": [
+        "models/best_model_S.joblib",
+        "data/processed/splits_S.parquet",
+        "reports/generalization_S.json"
+      ]
+    },
+    "classification_reports.txt": {
+      "rows": null,
+      "columns": null,
+      "bytes": 4647,
+      "description": "Human-readable exact classification reports for every split and partition.",
+      "sources": [
+        "reports/generalization_S.json"
+      ]
+    },
+    "model_comparison_S.csv": {
+      "rows": 10,
+      "columns": 23,
+      "bytes": 3248,
+      "description": "Five model families on Split G and Split R test partitions.",
+      "sources": [
+        "reports/model_comparison_S.csv"
+      ]
+    },
+    "class_balance_sweep.csv": {
+      "rows": 4,
+      "columns": 9,
+      "bytes": 748,
+      "description": "Validation scores for uncapped, 1:1, 2:1, and 3:1 class-2 caps.",
+      "sources": [
+        "reports/class_balance_sweep.csv"
+      ]
+    },
+    "baselines_S.csv": {
+      "rows": 12,
+      "columns": 8,
+      "bytes": 847,
+      "description": "Majority, logistic, and LightGBM imbalance baselines.",
+      "sources": [
+        "reports/baselines_S.csv"
+      ]
+    },
+    "model_config.json": {
+      "rows": null,
+      "columns": null,
+      "bytes": 3554,
+      "description": "Complete deployed-model configuration and provenance.",
+      "sources": [
+        "models/model_metadata_S.json",
+        "models/best_model_S.joblib",
+        "models/calibration_S.json",
+        "models/domain_S.json",
+        "models/selected_features_S.json"
+      ]
+    },
+    "artifact_checksums.csv": {
+      "rows": 15,
+      "columns": 3,
+      "bytes": 1553,
+      "description": "SHA-256 checksums of the model, data, and report artifacts used here.",
+      "sources": [
+        "models/best_model_S.joblib",
+        "models/model_metadata_S.json",
+        "models/calibration_S.json",
+        "models/domain_S.json",
+        "models/selected_features_S.json",
+        "models/train_drugs_S.json",
+        "data/processed/splits_S.parquet",
+        "data/processed/evidence_S.parquet",
+        "data/interim/drugs_clean.parquet",
+        "data/interim/foods_clean.parquet",
+        "data/interim/drug_moe.parquet",
+        "data/interim/food_moe.parquet",
+        "reports/generalization_S.json",
+        "reports/single_model_evaluation.json",
+        "reports/calibration_S.json"
+      ]
+    },
+    "confusion_matrix_R_validation.png": {
+      "rows": null,
+      "columns": null,
+      "bytes": 89435,
+      "description": "Confusion matrix image for Split R validation.",
+      "sources": [
+        "reports/generalization_S.json"
+      ]
+    },
+    "confusion_matrix_R_test.png": {
+      "rows": null,
+      "columns": null,
+      "bytes": 91146,
+      "description": "Confusion matrix image for Split R test.",
+      "sources": [
+        "reports/generalization_S.json"
+      ]
+    },
+    "confusion_matrix_G_validation.png": {
+      "rows": null,
+      "columns": null,
+      "bytes": 86308,
+      "description": "Confusion matrix image for Split G validation.",
+      "sources": [
+        "reports/generalization_S.json"
+      ]
+    },
+    "confusion_matrix_G_test.png": {
+      "rows": null,
+      "columns": null,
+      "bytes": 88659,
+      "description": "Confusion matrix image for Split G test.",
+      "sources": [
+        "reports/generalization_S.json"
+      ]
+    },
+    "confusion_matrix_F_validation.png": {
+      "rows": null,
+      "columns": null,
+      "bytes": 87891,
+      "description": "Confusion matrix image for Split F validation.",
+      "sources": [
+        "reports/generalization_S.json"
+      ]
+    },
+    "confusion_matrix_F_test.png": {
+      "rows": null,
+      "columns": null,
+      "bytes": 88468,
+      "description": "Confusion matrix image for Split F test.",
+      "sources": [
+        "reports/generalization_S.json"
+      ]
+    },
+    "confusion_matrix_D_validation.png": {
+      "rows": null,
+      "columns": null,
+      "bytes": 90065,
+      "description": "Confusion matrix image for Split D validation.",
+      "sources": [
+        "reports/generalization_S.json"
+      ]
+    },
+    "confusion_matrix_D_test.png": {
+      "rows": null,
+      "columns": null,
+      "bytes": 82773,
+      "description": "Confusion matrix image for Split D test.",
+      "sources": [
+        "reports/generalization_S.json"
+      ]
+    },
+    "confusion_matrices_S_test.png": {
+      "rows": null,
+      "columns": null,
+      "bytes": 128088,
+      "description": "2x2 overview of the four test confusion matrices.",
+      "sources": [
+        "reports/generalization_S.json"
+      ]
+    },
+    "metrics_overview_validation.png": {
+      "rows": null,
+      "columns": null,
+      "bytes": 70878,
+      "description": "Metric overview image for all splits (validation).",
+      "sources": [
+        "reports/generalization_S.json"
+      ]
+    },
+    "metrics_overview_test.png": {
+      "rows": null,
+      "columns": null,
+      "bytes": 70285,
+      "description": "Metric overview image for all splits (test).",
+      "sources": [
+        "reports/generalization_S.json"
+      ]
+    },
+    "metrics_table_S.png": {
+      "rows": null,
+      "columns": null,
+      "bytes": 120388,
+      "description": "Rendered table of every aggregate metric score.",
+      "sources": [
+        "reports/generalization_S.json"
+      ]
+    },
+    "per_class_f1_S.png": {
+      "rows": null,
+      "columns": null,
+      "bytes": 44202,
+      "description": "Per-class F1 image for the four test partitions.",
+      "sources": [
+        "reports/generalization_S.json"
+      ]
+    },
+    "roc_pr_curves_G.png": {
+      "rows": null,
+      "columns": null,
+      "bytes": 166884,
+      "description": "ROC and precision-recall curves for Split G test.",
+      "sources": [
+        "models/best_model_S.joblib",
+        "data/processed/splits_S.parquet"
+      ]
+    },
+    "calibration_reliability_S.png": {
+      "rows": null,
+      "columns": null,
+      "bytes": 146915,
+      "description": "Reliability diagrams before and after temperature scaling.",
+      "sources": [
+        "reports/calibration_S.json"
+      ]
+    },
+    "threshold_coverage_S.png": {
+      "rows": null,
+      "columns": null,
+      "bytes": 101610,
+      "description": "Validation threshold curve for the abstention decision.",
+      "sources": [
+        "reports/calibration_S.json"
+      ]
+    },
+    "model_comparison_S.png": {
+      "rows": null,
+      "columns": null,
+      "bytes": 98520,
+      "description": "Model-family comparison image for Split G and Split R.",
+      "sources": [
+        "reports/model_comparison_S.csv"
+      ]
+    },
+    "class_balance_sweep_S.png": {
+      "rows": null,
+      "columns": null,
+      "bytes": 86063,
+      "description": "Class-ratio sweep image with the deployed 2:1 recipe marked.",
+      "sources": [
+        "reports/class_balance_sweep.csv"
+      ]
+    },
+    "food_tanimoto_distribution_S.png": {
+      "rows": null,
+      "columns": null,
+      "bytes": 99876,
+      "description": "Food Tanimoto distributions for cleaning and applicability domain.",
+      "sources": [
+        "step_csvs/food_tanimoto_neighbors.csv",
+        "step_csvs/food_tanimoto_applicability.csv"
+      ]
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "cases": 20,
+  "scored_cases": 16,
+  "passed": 16,
+  "failed": 0,
+  "abstained": 2,
+  "not_supported": 2,
+  "informational": 2,
+  "summary_note": "The model is not tuned on these pairs. Failures and abstentions are reported as findings. The two 'paper unseen compound' rows use PubChem SMILES when available and are informational."
+}

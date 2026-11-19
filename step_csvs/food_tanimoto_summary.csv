@@ -1,0 +1,25 @@
+﻿metric,value
+cleaned_compounds,5022
+organic_compounds,4877
+inorganic_compounds,145
+fingerprint,"Morgan radius=2, 2048 bits"
+tanimoto_dedupe_cutoff,0.75
+near_duplicates_removed_in_cleaning,7942
+pairwise_comparisons,12607731
+mean_pairwise_tanimoto,0.08206082986092735
+max_pairwise_tanimoto,0.9024390243902439
+pairs_at_or_above_0.75,3
+pairs_at_or_above_0.75_involving_protected,3
+pairs_at_or_above_0.75_non_protected,0
+pairs_at_or_above_0.90,1
+pairs_at_or_above_0.50,10774
+nearest_neighbor_tanimoto_min,0.020833333333333332
+nearest_neighbor_tanimoto_p10,0.39136310223266746
+nearest_neighbor_tanimoto_median,0.6153846153846154
+nearest_neighbor_tanimoto_p90,0.7288135593220338
+nearest_neighbor_tanimoto_max,0.9024390243902439
+training_reference_compounds,2291
+food_applicability_threshold,0.3333
+unseen_organic_compounds,2592
+unseen_organic_inside_domain,2361
+unseen_organic_outside_domain,231

@@ -1,0 +1,342 @@
+{
+  "version": "2026.11.1",
+  "source": "curated clinical pharmacology (this project)",
+  "validation_status": "unvalidated_curated",
+  "note": "Curated rules are evaluated before ML and dataset evidence. They are deliberately reported as rule-based output and must not be counted as ML predictions in model evaluation.",
+  "rules": [
+    {
+      "rule_id": "WF-GRAPEFRUIT",
+      "label": 0,
+      "drug_any": [
+        "warfarin",
+        "acenocoumarol",
+        "phenprocoumon"
+      ],
+      "food_any": [
+        "grapefruit",
+        "bergamottin",
+        "naringin",
+        "bergapten",
+        "furanocoumarin"
+      ],
+      "sentence": "A should not be taken with food containing B.",
+      "reason": "Grapefruit inhibits CYP450; the dataset annotates warfarin + grapefruit as avoid and monitor INR.",
+      "provenance": "FHDI annotation + standard warfarin labelling",
+      "validation_status": "unvalidated_curated",
+      "version": "2026.11.1"
+    },
+    {
+      "rule_id": "WF-GRAPE",
+      "label": 0,
+      "drug_any": [
+        "warfarin",
+        "acenocoumarol",
+        "phenprocoumon"
+      ],
+      "food_any": [
+        "grape"
+      ],
+      "sentence": "A should not be taken with food containing B.",
+      "reason": "Grape and grapefruit products are flagged with warfarin; keep intake consistent and monitor INR.",
+      "provenance": "Curated from standard clinical pharmacology cautions. Not independently validated by this project and not a substitute for prescribing guidance.",
+      "validation_status": "unvalidated_curated",
+      "version": "2026.11.1"
+    },
+    {
+      "rule_id": "WF-CRANBERRY",
+      "label": 0,
+      "drug_any": [
+        "warfarin",
+        "acenocoumarol",
+        "phenprocoumon"
+      ],
+      "food_any": [
+        "cranber"
+      ],
+      "sentence": "A should not be taken with food containing B.",
+      "reason": "Cranberry has case reports of raised INR with warfarin; keep intake consistent and monitor INR.",
+      "provenance": "Curated from standard clinical pharmacology cautions. Not independently validated by this project and not a substitute for prescribing guidance.",
+      "validation_status": "unvalidated_curated",
+      "version": "2026.11.1"
+    },
+    {
+      "rule_id": "WF-VITAMIN-K",
+      "label": 0,
+      "drug_any": [
+        "warfarin",
+        "acenocoumarol",
+        "phenprocoumon"
+      ],
+      "food_any": [
+        "vitamin k",
+        "phylloquinone",
+        "spinach",
+        "kale",
+        "broccoli",
+        "leafy green"
+      ],
+      "sentence": "A should not be taken with food containing B.",
+      "reason": "Vitamin K antagonizes warfarin; keep intake consistent and monitor INR.",
+      "provenance": "Standard warfarin labelling",
+      "validation_status": "unvalidated_curated",
+      "version": "2026.11.1"
+    },
+    {
+      "rule_id": "WF-ALCOHOL",
+      "label": 0,
+      "drug_any": [
+        "warfarin",
+        "acenocoumarol",
+        "phenprocoumon"
+      ],
+      "food_any": [
+        "alcohol",
+        "ethanol",
+        "wine",
+        "beer",
+        "spirits",
+        "liquor"
+      ],
+      "sentence": "A should not be taken with food containing B.",
+      "reason": "Alcohol changes warfarin metabolism and bleeding risk; avoid heavy or binge drinking.",
+      "provenance": "Curated from standard clinical pharmacology cautions. Not independently validated by this project and not a substitute for prescribing guidance.",
+      "validation_status": "unvalidated_curated",
+      "version": "2026.11.1"
+    },
+    {
+      "rule_id": "WF-GARLIC",
+      "label": 0,
+      "drug_any": [
+        "warfarin",
+        "acenocoumarol",
+        "phenprocoumon"
+      ],
+      "food_any": [
+        "garlic",
+        "allicin",
+        "dimethyl disulfide"
+      ],
+      "sentence": "A should not be taken with food containing B.",
+      "reason": "Garlic constituents have case reports of altered INR with warfarin; monitor INR.",
+      "provenance": "Curated from standard clinical pharmacology cautions. Not independently validated by this project and not a substitute for prescribing guidance.",
+      "validation_status": "unvalidated_curated",
+      "version": "2026.11.1"
+    },
+    {
+      "rule_id": "STATIN-GRAPEFRUIT",
+      "label": 0,
+      "drug_any": [
+        "simvastatin",
+        "lovastatin"
+      ],
+      "food_any": [
+        "grapefruit",
+        "bergamottin",
+        "naringin",
+        "bergapten",
+        "furanocoumarin"
+      ],
+      "sentence": "A should not be taken with food containing B.",
+      "reason": "Grapefruit raises statin exposure and the risk of myopathy.",
+      "provenance": "Standard simvastatin/lovastatin labelling",
+      "validation_status": "unvalidated_curated",
+      "version": "2026.11.1"
+    },
+    {
+      "rule_id": "CYP3A4-GRAPEFRUIT",
+      "label": 0,
+      "drug_any": [
+        "midazolam",
+        "triazolam",
+        "nisoldipine",
+        "felodipine",
+        "buspirone",
+        "cyclosporine",
+        "tacrolimus",
+        "sirolimus",
+        "sildenafil",
+        "tadalafil",
+        "vardenafil"
+      ],
+      "food_any": [
+        "grapefruit",
+        "bergamottin",
+        "naringin",
+        "bergapten",
+        "furanocoumarin"
+      ],
+      "sentence": "A should not be taken with food containing B.",
+      "reason": "Grapefruit inhibits intestinal CYP3A4 and raises exposure of this CYP3A4 substrate.",
+      "provenance": "Curated from standard clinical pharmacology cautions. Not independently validated by this project and not a substitute for prescribing guidance.",
+      "validation_status": "unvalidated_curated",
+      "version": "2026.11.1"
+    },
+    {
+      "rule_id": "NITRO-ALCOHOL",
+      "label": 0,
+      "drug_any": [
+        "metronidazole",
+        "tinidazole"
+      ],
+      "food_any": [
+        "alcohol",
+        "ethanol",
+        "wine",
+        "beer",
+        "spirits",
+        "liquor"
+      ],
+      "sentence": "A should not be taken with food containing B.",
+      "reason": "Alcohol with nitroimidazoles can cause a disulfiram-like reaction.",
+      "provenance": "Standard metronidazole/tinidazole labelling",
+      "validation_status": "unvalidated_curated",
+      "version": "2026.11.1"
+    },
+    {
+      "rule_id": "MAOI-TYRAMINE",
+      "label": 0,
+      "drug_any": [
+        "phenelzine",
+        "tranylcypromine",
+        "isocarboxazid",
+        "selegiline",
+        "moclobemide",
+        "linezolid"
+      ],
+      "food_any": [
+        "tyramine",
+        "cheese",
+        "aged",
+        "cured",
+        "fermented",
+        "soy sauce",
+        "sauerkraut",
+        "wine",
+        "beer"
+      ],
+      "sentence": "A should not be taken with food containing B.",
+      "reason": "Tyramine-rich foods can trigger a hypertensive crisis with MAO inhibitors.",
+      "provenance": "Standard MAO-inhibitor labelling",
+      "validation_status": "unvalidated_curated",
+      "version": "2026.11.1"
+    },
+    {
+      "rule_id": "DIGOXIN-STJOHN",
+      "label": 0,
+      "drug_any": [
+        "digoxin"
+      ],
+      "food_any": [
+        "st john",
+        "hyperforin",
+        "hypericum",
+        "hypericin"
+      ],
+      "sentence": "A should not be taken with food containing B.",
+      "reason": "St John's Wort induces P-glycoprotein and lowers digoxin exposure.",
+      "provenance": "Curated from standard clinical pharmacology cautions. Not independently validated by this project and not a substitute for prescribing guidance.",
+      "validation_status": "unvalidated_curated",
+      "version": "2026.11.1"
+    },
+    {
+      "rule_id": "CATION-CHELATION",
+      "label": 0,
+      "drug_any": [
+        "tetracycline",
+        "cycline",
+        "floxacin"
+      ],
+      "food_any": [
+        "calcium",
+        "iron",
+        "magnesium",
+        "zinc",
+        "aluminium",
+        "aluminum"
+      ],
+      "sentence": "A should not be taken with food containing B.",
+      "reason": "Tetracyclines/quinolones bind calcium, iron and other cations; separate dosing.",
+      "provenance": "Standard tetracycline/quinolone labelling",
+      "validation_status": "unvalidated_curated",
+      "version": "2026.11.1"
+    },
+    {
+      "rule_id": "LEVOTHYROXINE-CATION",
+      "label": 0,
+      "drug_any": [
+        "levothyroxine",
+        "thyroxine"
+      ],
+      "food_any": [
+        "calcium",
+        "iron"
+      ],
+      "sentence": "A should not be taken with food containing B.",
+      "reason": "Calcium and iron reduce levothyroxine absorption; separate dosing.",
+      "provenance": "Standard levothyroxine labelling",
+      "validation_status": "unvalidated_curated",
+      "version": "2026.11.1"
+    },
+    {
+      "rule_id": "NITRATE-ALCOHOL",
+      "label": 0,
+      "drug_any": [
+        "nitroglycerin",
+        "nitrate"
+      ],
+      "food_any": [
+        "alcohol",
+        "ethanol",
+        "wine",
+        "beer",
+        "spirits",
+        "liquor"
+      ],
+      "sentence": "A should not be taken with food containing B.",
+      "reason": "Alcohol can cause severe hypotension with nitrates.",
+      "provenance": "Standard nitrate labelling",
+      "validation_status": "unvalidated_curated",
+      "version": "2026.11.1"
+    },
+    {
+      "rule_id": "MTX-ALCOHOL",
+      "label": 0,
+      "drug_any": [
+        "methotrexate"
+      ],
+      "food_any": [
+        "alcohol",
+        "ethanol",
+        "wine",
+        "beer",
+        "spirits",
+        "liquor"
+      ],
+      "sentence": "A should not be taken with food containing B.",
+      "reason": "Alcohol increases hepatotoxicity risk with methotrexate.",
+      "provenance": "Standard methotrexate labelling",
+      "validation_status": "unvalidated_curated",
+      "version": "2026.11.1"
+    },
+    {
+      "rule_id": "BENZO-ALCOHOL",
+      "label": 0,
+      "drug_any": [
+        "diazepam"
+      ],
+      "food_any": [
+        "alcohol",
+        "ethanol",
+        "wine",
+        "beer",
+        "spirits",
+        "liquor"
+      ],
+      "sentence": "A should not be taken with food containing B.",
+      "reason": "Alcohol adds CNS depression to benzodiazepines.",
+      "provenance": "Curated from standard clinical pharmacology cautions. Not independently validated by this project and not a substitute for prescribing guidance.",
+      "validation_status": "unvalidated_curated",
+      "version": "2026.11.1"
+    }
+  ]
+}

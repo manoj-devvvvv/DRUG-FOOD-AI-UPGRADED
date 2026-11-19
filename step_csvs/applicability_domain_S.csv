@@ -1,0 +1,3 @@
+﻿side,threshold,reference_count,rule,validation_p10
+drug,0.1856,223,10th percentile of validation similarities for unseen drugs (Split G validation),0.1856
+food,0.3333,2291,10th percentile of validation similarities for unseen compounds (Split F validation),0.3333

@@ -1,0 +1,20 @@
+{
+  "drug_molecules": 1359,
+  "food_molecules": 4877,
+  "drug_descriptor_failures": [],
+  "food_descriptor_failures": [],
+  "drug_duplicate_vectors_removed": [],
+  "food_duplicate_vectors_removed": [],
+  "all_values_finite": true,
+  "verification": {
+    "pairs_checked": 500,
+    "columns_ours": 3780,
+    "max_abs_diff_vs_pybio_products": 0.0005000000001018634,
+    "max_abs_diff_vs_pybio_sums": 1.1368683772161603e-13,
+    "max_abs_diff_vs_direct_arithmetic": 0.0,
+    "library_rounds_to_3dp": true,
+    "pass_library_tolerance_1e-3": true,
+    "pass_direct_tolerance_1e-9": true
+  },
+  "seconds": 1.7
+}

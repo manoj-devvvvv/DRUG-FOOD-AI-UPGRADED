@@ -1,0 +1,19 @@
+﻿dataset,metric,value,notes
+Druginfo.csv,rows,1516,raw drug table
+Druginfo.csv,columns,17,
+Druginfo.csv,drugs_with_smiles,1437,Canonical_SMILES present
+InteractionInformation.csv,rows,23950,raw drug-food interaction table
+InteractionInformation.csv,columns,17,
+InteractionInformation.csv,unique_drugs,1507,
+InteractionInformation.csv,unique_components,253,
+InteractionInformation.csv,unique_food_herb_ids,1336,
+food_fhdi_clean.csv,rows,838492,raw food-compound links
+food_fhdi_clean.csv,columns,11,
+food_fhdi_clean.csv,unique_food_ids,177,
+food_fhdi_clean.csv,unique_compounds,13282,
+InteractionInformation.csv,effect_rows__possible,17827,raw Effect value
+InteractionInformation.csv,effect_rows__no_effect,2374,raw Effect value
+InteractionInformation.csv,effect_rows__positive,1915,raw Effect value
+InteractionInformation.csv,effect_rows__negative,1437,raw Effect value
+InteractionInformation.csv,effect_rows__harmful,393,raw Effect value
+InteractionInformation.csv,effect_rows__possible,4,raw Effect value

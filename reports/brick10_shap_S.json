@@ -1,0 +1,50 @@
+{
+  "mode": "S",
+  "backend": "TreeExplainer",
+  "sample_rows": 2618,
+  "top_10_features": {
+    "PEOEVSA6+PEOEVSA6": 0.16542061294118562,
+    "PEOEVSA7+PEOEVSA7": 0.1582514631251494,
+    "PEOEVSA5+PEOEVSA5": 0.1344561626513799,
+    "abs(MRVSA6-MRVSA6)": 0.12446947395801544,
+    "slogPVSA5+slogPVSA5": 0.10552260279655457,
+    "slogPVSA9+slogPVSA9": 0.09087104847033818,
+    "slogPVSA11+slogPVSA11": 0.0876699114839236,
+    "slogPVSA1/slogPVSA1": 0.07711425175269444,
+    "VSAEstate6+VSAEstate6": 0.07558509707450867,
+    "VSAEstate2+VSAEstate2": 0.07360962157448132
+  },
+  "paper_top_features": [
+    "MRVSA0",
+    "PEOEVSA5",
+    "EstateVSA7",
+    "PEOEVSA9",
+    "EstateVSA2"
+  ],
+  "paper_features_present_in_top_10": [
+    "PEOEVSA5+PEOEVSA5"
+  ],
+  "per_class_top_5": {
+    "negative": [
+      "PEOEVSA5+PEOEVSA5",
+      "slogPVSA9+slogPVSA9",
+      "slogPVSA11+slogPVSA11",
+      "slogPVSA1/slogPVSA1",
+      "slogPVSA5+slogPVSA5"
+    ],
+    "positive": [
+      "PEOEVSA7+PEOEVSA7",
+      "PEOEVSA6+PEOEVSA6",
+      "abs(MRVSA6-MRVSA6)",
+      "PEOEVSA5+PEOEVSA5",
+      "slogPVSA5+slogPVSA5"
+    ],
+    "non_significant": [
+      "PEOEVSA6+PEOEVSA6",
+      "PEOEVSA7+PEOEVSA7",
+      "abs(MRVSA6-MRVSA6)",
+      "slogPVSA5+slogPVSA5",
+      "MRVSA9/MRVSA9"
+    ]
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "drug|tizanidine": {
+    "smiles": "Cc1ccc2[nH]c(N=C3CCNCC3)nc2n1",
+    "source": "gemini",
+    "note": null
+  },
+  "drug|warfarin": {
+    "smiles": "CC(=O)CC(c1ccccc1)c1c(O)c2ccccc2oc1=O",
+    "source": "gemini",
+    "note": null
+  },
+  "drug|isotretinoin": {
+    "smiles": "CC(C=CC1=C(C)CCCC1(C)C)=CC=CC(C)=CC(=O)O",
+    "source": "gemini",
+    "note": null
+  },
+  "food|vitamin a": {
+    "smiles": "CC(C=CC=C(C)C=CC1=C(C)CCCC1(C)C)=CC=CO",
+    "source": "gemini",
+    "note": null
+  },
+  "food|vitamin c": {
+    "smiles": "O=C1O[C@H]([C@@H](O)CO)C(O)=C1O",
+    "source": "gemini",
+    "note": null
+  },
+  "drug|leutin": {
+    "smiles": "CC(C=CC=C(C)C=CC1=C(C)CC(O)CC1(C)C)=CC=CC=C(C)C=CC=C(C)C=CC1C(C)=CC(O)CC1(C)C",
+    "source": "pubchem",
+    "note": null
+  },
+  "drug|paracetamol": {
+    "smiles": "CC(=O)Nc1ccc(O)cc1",
+    "source": "gemini",
+    "note": null
+  }
+}

@@ -1,0 +1,229 @@
+{
+  "generated": "2026-11-18T20:24:12",
+  "model_version": "single-2026-11-16",
+  "model_sha256_prefix": "c8d4f9dadf2d63b2",
+  "files": {
+    "drug_cleaned.csv": {
+      "rows": 1359,
+      "columns": 8,
+      "bytes": 211056,
+      "description": "Cleaned drug table (one row per drug with a parsed structure).",
+      "sources": [
+        "data/interim/drugs_clean.parquet"
+      ]
+    },
+    "food_cleaned.csv": {
+      "rows": 5022,
+      "columns": 10,
+      "bytes": 679602,
+      "description": "Cleaned food-compound table after InChIKey and Tanimoto near-duplicate removal.",
+      "sources": [
+        "data/interim/foods_clean.parquet"
+      ]
+    },
+    "pairs.csv": {
+      "rows": 21042,
+      "columns": 9,
+      "bytes": 1422093,
+      "description": "Mode S labelled drug-compound pairs with Split R and Split G assignments.",
+      "sources": [
+        "data/processed/splits_S.parquet",
+        "data/interim/drugs_clean.parquet",
+        "data/interim/foods_clean.parquet"
+      ]
+    },
+    "features_generation.csv": {
+      "rows": 6236,
+      "columns": 63,
+      "bytes": 2232758,
+      "description": "60 PyBioMed MOE descriptors per cleaned molecule (drugs and organic foods).",
+      "sources": [
+        "data/interim/drug_moe.parquet",
+        "data/interim/food_moe.parquet"
+      ]
+    },
+    "feature_extraction.csv": {
+      "rows": 20947,
+      "columns": 22,
+      "bytes": 2890966,
+      "description": "The 18 selected pair features for every featurized Mode S pair.",
+      "sources": [
+        "data/processed/splits_S.parquet",
+        "models/selected_features_S.json"
+      ]
+    },
+    "split_assignments.csv": {
+      "rows": 21042,
+      "columns": 10,
+      "bytes": 1709676,
+      "description": "Every Mode S pair with its label, weak flag, and Split R/G assignment.",
+      "sources": [
+        "data/processed/splits_S.parquet",
+        "data/interim/drugs_clean.parquet",
+        "data/interim/foods_clean.parquet"
+      ]
+    },
+    "model_predictions_G.csv": {
+      "rows": 2618,
+      "columns": 19,
+      "bytes": 638529,
+      "description": "Deployed artifact best_model_S.joblib scored once on the Split G test pairs; p0/p1/p2 are temperature-scaled, p*_raw are the estimator probabilities.",
+      "sources": [
+        "models/best_model_S.joblib",
+        "models/selected_features_S.json",
+        "data/processed/splits_S.parquet",
+        "models/calibration_S.json"
+      ]
+    },
+    "evidence_S.csv": {
+      "rows": 9525,
+      "columns": 18,
+      "bytes": 3915645,
+      "description": "Dataset evidence lookup table for exact drug-compound pairs (not an ML prediction).",
+      "sources": [
+        "data/processed/evidence_S.parquet"
+      ]
+    },
+    "class_balance_sweep.csv": {
+      "rows": 4,
+      "columns": 9,
+      "bytes": 748,
+      "description": "Validation scores for the four training class-ratio recipes.",
+      "sources": [
+        "reports/class_balance_sweep.csv"
+      ]
+    },
+    "model_comparison_S.csv": {
+      "rows": 10,
+      "columns": 23,
+      "bytes": 3248,
+      "description": "Five model families compared on Split G and Split R test partitions.",
+      "sources": [
+        "reports/model_comparison_S.csv"
+      ]
+    },
+    "baselines_S.csv": {
+      "rows": 12,
+      "columns": 8,
+      "bytes": 847,
+      "description": "Majority, logistic, and LightGBM imbalance baselines on Split G.",
+      "sources": [
+        "reports/baselines_S.csv"
+      ]
+    },
+    "feature_selection_funnel.csv": {
+      "rows": 6,
+      "columns": 4,
+      "bytes": 457,
+      "description": "Feature-selection funnel from 3,780 pair features to 18.",
+      "sources": [
+        "reports/brick7_selection_log_S.json"
+      ]
+    },
+    "feature_selection.csv": {
+      "rows": 18,
+      "columns": 9,
+      "bytes": 3090,
+      "description": "The 18 selected pair features with descriptor meanings and stability hits.",
+      "sources": [
+        "reports/feature_table_S.csv",
+        "models/selected_features_S.json"
+      ]
+    },
+    "calibration_S.csv": {
+      "rows": 4,
+      "columns": 7,
+      "bytes": 507,
+      "description": "Temperature-scaling calibration scores before and after calibration.",
+      "sources": [
+        "reports/calibration_S.json"
+      ]
+    },
+    "applicability_domain_S.csv": {
+      "rows": 2,
+      "columns": 5,
+      "bytes": 270,
+      "description": "Applicability-domain thresholds and reference counts.",
+      "sources": [
+        "models/domain_S.json"
+      ]
+    },
+    "food_tanimoto_neighbors.csv": {
+      "rows": 5022,
+      "columns": 8,
+      "bytes": 521321,
+      "description": "Nearest Morgan/Tanimoto neighbour for every cleaned food compound.",
+      "sources": [
+        "data/interim/foods_clean.parquet"
+      ]
+    },
+    "food_tanimoto_applicability.csv": {
+      "rows": 5022,
+      "columns": 7,
+      "bytes": 353097,
+      "description": "Food-side applicability-domain similarity to the 2,291 training reference compounds.",
+      "sources": [
+        "data/interim/foods_clean.parquet",
+        "models/domain_S.json"
+      ]
+    },
+    "food_tanimoto_summary.csv": {
+      "rows": 24,
+      "columns": 2,
+      "bytes": 917,
+      "description": "Summary of Morgan/Tanimoto similarity on the cleaned food dataset.",
+      "sources": [
+        "data/interim/foods_clean.parquet",
+        "models/domain_S.json",
+        "reports/brick3_funnel.json"
+      ]
+    },
+    "raw_dataset_counts.csv": {
+      "rows": 18,
+      "columns": 4,
+      "bytes": 1028,
+      "description": "Initial row and column counts of the three raw datasets plus raw effect counts.",
+      "sources": [
+        "reports/brick1_audit.json"
+      ]
+    },
+    "split_counts.csv": {
+      "rows": 12,
+      "columns": 8,
+      "bytes": 472,
+      "description": "Row and class counts for every split and partition.",
+      "sources": [
+        "data/processed/splits_S.parquet",
+        "reports/generalization_S.json"
+      ]
+    },
+    "pipeline_counts.csv": {
+      "rows": 12,
+      "columns": 6,
+      "bytes": 1512,
+      "description": "Stage-by-stage input/output row counts for the deployed pipeline.",
+      "sources": [
+        "reports/brick2_funnel.json",
+        "reports/brick3_funnel.json",
+        "reports/brick4_label_report.json",
+        "reports/brick7_selection_log_S.json",
+        "reports/single_model_evaluation.json",
+        "reports/generalization_S.json"
+      ]
+    },
+    "context.md": {
+      "bytes": 13494,
+      "description": "Initial dataset rows and the row count after every pipeline step.",
+      "sources": [
+        "all saved artifacts listed inside the file"
+      ]
+    },
+    "documentation.md": {
+      "bytes": 20402,
+      "description": "Three-section documentation: ML, Backend, Frontend.",
+      "sources": [
+        "all saved artifacts and source files referenced inside the file"
+      ]
+    }
+  }
+}

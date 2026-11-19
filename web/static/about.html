@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About the model · Food–Drug ML with SHAP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/styles.css?v=7" />
+  <link rel="stylesheet" href="/static/pages.css?v=1" />
+</head>
+<body class="site-page">
+  <div class="ambient" aria-hidden="true"></div>
+
+  <header class="site-top">
+    <a class="site-brand" href="/">
+      <span class="mark" aria-hidden="true">
+        <svg viewBox="0 0 32 32" width="24" height="24"><path d="M16 3a13 13 0 1 0 0 26 13 13 0 0 0 0-26Zm0 3a10 10 0 0 1 9.5 7H15v3h11.4a10 10 0 0 1-4.1 6.2L16 16.5 13 19l5.6 5.6A10 10 0 0 1 6.5 13h11V10H6.5A10 10 0 0 1 16 6Z" fill="currentColor"/></svg>
+      </span>
+      <span class="site-brand-text">
+        <strong>Food–Drug Interaction ML</strong>
+        <small>Research tool · not medical advice</small>
+      </span>
+    </a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="/">Home</a>
+      <a href="/predict">Predict</a>
+    </nav>
+  </header>
+
+  <main class="about">
+    <div class="about-head">
+      <p class="eyebrow">Project documentation</p>
+      <h1>About the model</h1>
+      <p class="hero-lede">
+        Food–Drug ML model with SHAP — a three-class interaction predictor built from
+        the FHDI gold-standard dataset, molecular descriptors, grouped-drug validation,
+        explainability, and a safety-first inference layer.
+      </p>
+    </div>
+
+    <section class="about-section" id="abstract">
+      <h2>Abstract</h2>
+      <p>
+        The system predicts the effect of pairing a drug with a food compound in one of
+        three classes: <strong>avoid together</strong>, <strong>beneficial / take with food</strong>,
+        or <strong>non-significant</strong>. Each molecule is represented by 60 MOE
+        descriptors from RDKit/PyBioMed. Drug–compound pairs are expanded into 3,780
+        pairwise features (descriptor products, sums, absolute differences and ratios),
+        then reduced to 18 features by variance, correlation, LASSO and permutation
+        selection. Five classifiers are tuned on a validation partition: XGBoost,
+        LightGBM, RandomForest, ExtraTrees and a multi-layer perceptron. Models are
+        evaluated with a drug-grouped split (Split G) for honest generalization to unseen
+        drugs, plus a random split (Split R) for paper comparability. One LightGBM model
+        is served, with the majority non-significant class capped in training to trade a
+        little validation macro-F1 for higher avoid-class recall. Drug and food names are
+        resolved to SMILES by the local database, then Gemini, then PubChem, and every
+        answer is validated with RDKit. The model is wrapped in a rule/evidence inference
+        layer, abstains below a validation-selected 0.77 confidence threshold, and returns
+        TreeSHAP contributions for every feature and every class.
+      </p>
+    </section>
+
+    <section class="about-section" id="how">
+      <h2>How a prediction is made</h2>
+      <ol class="flow">
+        <li>
+          <strong>Input resolution.</strong> Drug and food names, IDs or SMILES are
+          normalized and matched against curated tables. Unknown names are resolved to a
+          canonical SMILES by Gemini, then PubChem, and every structure is validated with
+          RDKit. The Gemini key stays server-side in <code>.env</code> and is never sent to
+          the browser. Food names are expanded to marker compounds (for example grapefruit →
+          naringin/bergamottin).
+        </li>
+        <li>
+          <strong>Clinical rule layer.</strong> Well-established interactions
+          (warfarin + grapefruit, simvastatin + grapefruit, metronidazole + alcohol,
+          tetracyclines + calcium, MAO inhibitors + tyramine) short-circuit to a
+          conservative verdict with a stated reason.
+        </li>
+        <li>
+          <strong>Exact-pair dataset evidence.</strong> If the labelled dataset contains a
+          non-synthetic annotation for the exact drug–compound pair, that label is used
+          and shown as evidence.
+        </li>
+        <li>
+          <strong>ML scoring.</strong> Otherwise the pair is featurized and the trained
+          LightGBM model returns three class probabilities. The UI displays the winning
+          class, the probability bars, applicability-domain similarity and latency.
+        </li>
+        <li>
+          <strong>Abstention.</strong> If the calibrated top probability is below the
+          validation-selected 0.77, or either molecule is outside the applicability
+          domain, or the compound is inorganic, the system refuses to give a confident
+          verdict and asks the user to consult a pharmacist.
+        </li>
+      </ol>
+    </section>
+
+    <section class="about-section" id="model-limits">
+      <h2>Positive-class limitation</h2>
+      <p>
+        The current specific-pair label set contains only 24 beneficial examples, with 8
+        available to train the served drug-grouped model. A held-out score cannot establish
+        90% reliability for this class. Exact annotated pairs are returned as dataset
+        evidence; model-only positive signals remain provisional and are not medication
+        advice. More independently curated positive pairs are required before claiming
+        high positive-class accuracy.
+      </p>
+    </section>
+
+    <section class="about-section" id="architecture">
+      <h2>Architecture</h2>
+      <div class="two-col">
+        <div class="info-card">
+          <h3>Backend — FastAPI</h3>
+          <ul>
+            <li>One lazily built, thread-safe engine; the frozen model is loaded once and its SHAP explainer is pre-warmed.</li>
+            <li><code>POST /api/predict</code> — verdict, probabilities, resolution, SHAP, matched compounds, latency.</li>
+            <li><code>GET /api/suggest</code> — autocomplete over 1,359 drugs and 4,877 compounds.</li>
+            <li><code>GET /api/health</code>, <code>GET /api/meta</code> — readiness, model metadata, resolver status and rules.</li>
+            <li><code>GET /</code>, <code>/predict</code>, <code>/about</code> — landing, predictor, documentation pages.</li>
+          </ul>
+        </div>
+        <div class="info-card">
+          <h3>Frontend — vanilla HTML/CSS/JS</h3>
+          <ul>
+            <li>Landing page, predictor page and this about page; no framework or build step.</li>
+            <li>Fetch API with debounced autocomplete and AbortController for stale requests.</li>
+            <li>XSS-safe DOM rendering via <code>textContent</code>; accessible labels and ARIA states.</li>
+            <li>Probability bars, evidence/rule badges, calibrated confidence, resolution source, domain similarity, per-class SHAP and candidate compounds.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pipeline">
+        <span>Raw FHDI CSV</span><i aria-hidden="true">→</i>
+        <span>Audit &amp; clean</span><i aria-hidden="true">→</i>
+        <span>Pair labels</span><i aria-hidden="true">→</i>
+        <span>MOE descriptors</span><i aria-hidden="true">→</i>
+        <span>3,780 pair features</span><i aria-hidden="true">→</i>
+        <span>18 selected</span><i aria-hidden="true">→</i>
+        <span>Train &amp; tune 5 models</span><i aria-hidden="true">→</i>
+        <span>Class-ratio cap + calibrate</span><i aria-hidden="true">→</i>
+        <span>SHAP + FastAPI + UI</span>
+      </div>
+    </section>
+
+    <section class="about-section" id="techniques">
+      <h2>Techniques used</h2>
+      <div class="tech-grid">
+        <div class="info-card">
+          <h3>Molecular representation</h3>
+          <p>RDKit parses and canonicalizes SMILES. PyBioMed computes 60 MOE descriptors per molecule; inorganic or metal-containing compounds are refused.</p>
+        </div>
+        <div class="info-card">
+          <h3>Pairwise feature algebra</h3>
+          <p>For 60 descriptors: 3,600 products, 60 sums, 60 absolute differences and 60 ratios, giving 3,780 candidate features that encode both molecules and their complementarity.</p>
+        </div>
+        <div class="info-card">
+          <h3>Tanimoto / Morgan fingerprints</h3>
+          <p>Nearest-neighbour Tanimoto similarity on 2,048-bit Morgan fingerprints powers the applicability domain. It is also used during cleaning to remove near-duplicate compounds.</p>
+        </div>
+        <div class="info-card">
+          <h3>Feature selection</h3>
+          <p>Variance filter, Pearson correlation pruning (0.75), LASSO, stability selection and permutation importance reduce 3,780 features to 18.</p>
+        </div>
+        <div class="info-card">
+          <h3>Models &amp; tuning</h3>
+          <p>XGBoost, LightGBM, RandomForest, ExtraTrees and MLP, tuned with RandomizedSearchCV on a validation partition. Balanced class weights and 0.5 weights for weak synthetic pairs address the severe imbalance; the deployed model additionally caps the non-significant class at 2:1 in training.</p>
+        </div>
+        <div class="info-card">
+          <h3>Grouped validation</h3>
+          <p>Split G holds out whole drugs to measure generalization to unseen drugs. Split F holds out compounds, Split D holds out both, and Split R is a random reference. GroupKFold is used inside training.</p>
+        </div>
+        <div class="info-card">
+          <h3>SHAP explanations</h3>
+          <p>TreeSHAP explains each class on the test partition and, at prediction time, returns signed contributions for all 18 features in all three classes. The predicted class is expanded; the other two are available on demand.</p>
+        </div>
+        <div class="info-card">
+          <h3>Calibration &amp; abstention</h3>
+          <p>Temperature scaling is fitted on Split G validation. The acceptance threshold is the lowest validation threshold whose accepted error is at most 20% (currently 0.77). Below the threshold the predicted class is shown with its calibrated confidence and an abstention note; out-of-domain inputs are refused rather than guessed.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-section" id="labels">
+      <h2>One label policy</h2>
+      <div class="two-col">
+        <div class="info-card">
+          <h3>Pair-level labels</h3>
+          <p>Labels only the compounds named by the interaction text, curated marker compounds of a named food, or food-specific compounds. Corrected semantics treat warning-style “Positive” annotations as avoid. 444 labelled drugs, 21,042 pairs, classes 4,898 avoid / 24 beneficial / 16,120 non-significant.</p>
+        </div>
+        <div class="info-card">
+          <h3>Why one model</h3>
+          <p>An earlier “paper-like” mode copied one drug-level label onto every sampled compound. It produced large, easy numbers from label leakage rather than chemistry, so it was removed from the pipeline and serving path. There is now a single model and a single meaning for each class.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-section" id="results">
+      <h2>Model results on held-out test data</h2>
+      <p>
+        All five models were retrained on the full training partition with their tuned
+        hyperparameters and scored on the <strong>Split G test partition</strong>
+        (drugs never seen during training), using the uncapped training recipe. This is
+        the model comparison that selected LightGBM.
+      </p>
+      <div class="table-wrap">
+        <table class="metric-table">
+          <thead>
+            <tr><th>Model</th><th>Accuracy</th><th>Macro-F1</th><th>Avoid recall</th><th>Non-sig. recall</th></tr>
+          </thead>
+          <tbody>
+            <tr class="best"><td>LightGBM</td><td>0.7525</td><td>0.5066</td><td>0.3203</td><td>0.8923</td></tr>
+            <tr><td>MLP</td><td>0.7380</td><td>0.3879</td><td>0.2594</td><td>0.8933</td></tr>
+            <tr><td>RandomForest</td><td>0.7002</td><td>0.4092</td><td>0.4641</td><td>0.7769</td></tr>
+            <tr><td>XGBoost</td><td>0.5157</td><td>0.3642</td><td>0.7438</td><td>0.4416</td></tr>
+            <tr><td>ExtraTrees</td><td>0.4927</td><td>0.3402</td><td>0.8297</td><td>0.3834</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="caption">
+        LightGBM wins on both Split G and Split R and is the deployed model family.
+        Class 1 (beneficial) has only 24 real pairs, so its F1 is noisy and excluded here.
+      </p>
+
+      <h3 class="results-subhead">Deployed single model (class-2 cap 2:1)</h3>
+      <p>
+        The served artifact is a single LightGBM model. In training only, the dominant
+        non-significant class is capped at twice the avoid class; validation and test keep
+        the real distribution. On validation this costs 0.016 macro-F1 (0.4465 → 0.4304)
+        and gains 0.090 avoid-class recall (0.312 → 0.402) — a safety trade-off, not a
+        metric improvement. The test partition was scored once after the ratio,
+        temperature and threshold were frozen.
+      </p>
+      <div class="table-wrap">
+        <table class="metric-table">
+          <thead>
+            <tr><th>Split</th><th>Accuracy</th><th>Balanced acc.</th><th>Macro-F1</th><th>MCC</th></tr>
+          </thead>
+          <tbody>
+            <tr class="best"><td>G — unseen drugs (headline)</td><td>0.7269</td><td>0.7428</td><td>0.4865</td><td>0.2408</td></tr>
+            <tr><td>R — pair-random reference</td><td>0.7771</td><td>0.6363</td><td>0.5633</td><td>0.5037</td></tr>
+            <tr><td>F — unseen compounds</td><td>0.7593</td><td>0.6446</td><td>0.6296</td><td>0.3995</td></tr>
+            <tr><td>D — double-cold</td><td>0.6760</td><td>0.4683</td><td>0.4601</td><td>−0.0734</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="caption">
+        Abstention threshold 0.77: on Split G this accepts 45.3% of pairs at 0.817 accuracy.
+        Double-cold generalization remains weak and is reported rather than hidden.
+      </p>
+
+      <div class="figure-grid">
+        <figure>
+          <img src="/figures/model_comparison_S.png" alt="Macro-F1 of all five models on Split G and Split R, Mode S" />
+          <figcaption>All five models, Mode S test partitions.</figcaption>
+        </figure>
+        <figure>
+          <img src="/figures/shap_summary_S_negative.png" alt="SHAP summary plot for the avoid class, Mode S" />
+          <figcaption>TreeSHAP summary for the “avoid together” class.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="about-section" id="stack">
+      <h2>Tech stack</h2>
+      <div class="table-wrap">
+        <table class="metric-table">
+          <thead><tr><th>Layer</th><th>Tools</th></tr></thead>
+          <tbody>
+            <tr><td>Data &amp; chemistry</td><td>Python, pandas, NumPy, PyArrow, RDKit, PyBioMed</td></tr>
+            <tr><td>Machine learning</td><td>scikit-learn 1.7, XGBoost 3.4, LightGBM 4.7, SHAP 0.54</td></tr>
+            <tr><td>Evaluation</td><td>GroupKFold, PredefinedSplit, RandomizedSearchCV, split conformal, matplotlib</td></tr>
+            <tr><td>Backend</td><td>FastAPI 0.111, Uvicorn 0.29, Pydantic 2.12, joblib</td></tr>
+            <tr><td>Name resolution</td><td>Gemini generateContent REST, PubChem PUG REST, RDKit validation, JSON cache</td></tr>
+            <tr><td>Frontend</td><td>HTML5, CSS3, vanilla JavaScript (Fetch API), Google Fonts</td></tr>
+            <tr><td>Notebooks &amp; QA</td><td>Jupyter, nbformat, pytest, gate-check scripts</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="about-section" id="limits">
+      <h2>Limitations &amp; safety</h2>
+      <ul class="limits">
+        <li>Descriptor-only features cannot identify a named drug, so known clinical pairs rely on the rule and evidence layers. The ML model handles unseen, chemically plausible pairs.</li>
+        <li>Avoid-class recall on unseen drugs is about 0.39 even after the safety-oriented class cap; most avoid pairs are still missed, so abstention and the rule layer matter.</li>
+        <li>Class 1 has only 24 real pairs (one in the Split G test set); its metrics are not evidence of learning.</li>
+        <li>Double-cold generalization is weak (MCC −0.07); the system does not claim broad chemical generalization.</li>
+        <li>Name resolution can fail or mis-resolve mixtures and ambiguous names. Every response shows the resolved SMILES and its source so the structure can be checked.</li>
+        <li>This is a research tool. It does not replace clinical judgement; always confirm with a physician or pharmacist.</li>
+      </ul>
+    </section>
+
+    <div class="about-cta">
+      <a class="btn btn-primary" href="/predict">Try a prediction</a>
+      <a class="btn btn-ghost" href="/">Back to home</a>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <span class="disclaimer-dot" aria-hidden="true"></span>
+    Research tool; confirm with a physician or pharmacist.
+  </footer>
+</body>
+</html>

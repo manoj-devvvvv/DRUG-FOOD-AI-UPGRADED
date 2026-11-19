@@ -1,0 +1,9 @@
+﻿split,partition,n,true_avoid_pred_avoid,true_avoid_pred_beneficial,true_avoid_pred_nonsignificant,true_beneficial_pred_avoid,true_beneficial_pred_beneficial,true_beneficial_pred_nonsignificant,true_nonsignificant_pred_avoid,true_nonsignificant_pred_beneficial,true_nonsignificant_pred_nonsignificant
+R,validation,7862,1422,1,393,0,2,6,1306,9,4723
+R,test,2597,480,0,115,2,1,0,457,5,1537
+G,validation,7834,769,5,1139,3,2,9,1272,15,4620
+G,test,2618,252,4,384,0,1,0,324,3,1650
+F,validation,7837,1183,2,576,2,1,12,1277,3,4781
+F,test,2613,389,0,222,0,1,1,405,1,1594
+D,validation,2920,197,3,586,0,0,1,366,2,1765
+D,test,321,7,0,63,0,0,0,41,0,210

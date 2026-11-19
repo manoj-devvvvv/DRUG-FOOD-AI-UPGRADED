@@ -1,0 +1,77 @@
+Exact classification reports for the single LightGBM recipe 2026-11-16.
+Split G scores are the deployed artifact. Split R, F, and D scores come from
+refitting the same fixed recipe on each partition, as defined by the evaluation stage.
+Rows are true labels; columns are predicted labels in confusion_matrices.csv.
+Class 1 has very small support; its scores are unstable and must not be read as a reliable estimate.
+
+Split R - pair-random (same drugs may appear on both sides) - validation (n=7862)
+class              precision   recall       f1  support
+Avoid             0.521261 0.783040 0.625880     1816
+Beneficial        0.166667 0.250000 0.200000        8
+Non-significant   0.922101 0.782213 0.846416     6038
+macro avg         0.536676 0.605084 0.557432     7862
+weighted avg      0.828744 0.781862 0.794818     7862
+accuracy 0.781862; balanced accuracy 0.605084; MCC 0.499673; kappa 0.480016; ROC-AUC 0.8882673973025023; PR-AUC 0.587560
+
+Split R - pair-random (same drugs may appear on both sides) - test (n=2597)
+class              precision   recall       f1  support
+Avoid             0.511182 0.806723 0.625815      595
+Beneficial        0.166667 0.333333 0.222222        3
+Non-significant   0.930387 0.768884 0.841961     1999
+macro avg         0.536079 0.636313 0.563333     2597
+weighted avg      0.833461 0.777050 0.791724     2597
+accuracy 0.777050; balanced accuracy 0.636313; MCC 0.503689; kappa 0.478499; ROC-AUC 0.9042858977043086; PR-AUC 0.596296
+
+Split G - unseen drugs (whole-drug groups) - validation (n=7834)
+class              precision   recall       f1  support
+Avoid             0.376223 0.401986 0.388678     1913
+Beneficial        0.090909 0.142857 0.111111       14
+Non-significant   0.800971 0.782123 0.791435     5907
+macro avg         0.422701 0.442322 0.430408     7834
+weighted avg      0.695982 0.688154 0.691869     7834
+accuracy 0.688154; balanced accuracy 0.442322; MCC 0.181943; kappa 0.181750; ROC-AUC 0.6245835301939847; PR-AUC 0.454832
+
+Split G - unseen drugs (whole-drug groups) - test (n=2618)
+class              precision   recall       f1  support
+Avoid             0.437500 0.393750 0.414474      640
+Beneficial        0.125000 1.000000 0.222222        1
+Non-significant   0.811209 0.834598 0.822737     1977
+macro avg         0.457903 0.742783 0.486478     2618
+weighted avg      0.719590 0.726891 0.722703     2618
+accuracy 0.726891; balanced accuracy 0.742783; MCC 0.240805; kappa 0.240330; ROC-AUC 0.7669632011579517; PR-AUC 0.496463
+
+Split F - unseen food compounds (whole-compound groups) - validation (n=7837)
+class              precision   recall       f1  support
+Avoid             0.480504 0.671777 0.560265     1761
+Beneficial        0.166667 0.066667 0.095238       15
+Non-significant   0.890482 0.788814 0.836570     6061
+macro avg         0.512551 0.509086 0.497358     7837
+weighted avg      0.796973 0.761133 0.773065     7837
+accuracy 0.761133; balanced accuracy 0.509086; MCC 0.412499; kappa 0.402199; ROC-AUC 0.7656050155220305; PR-AUC 0.525268
+
+Split F - unseen food compounds (whole-compound groups) - test (n=2613)
+class              precision   recall       f1  support
+Avoid             0.489924 0.636661 0.553737      611
+Beneficial        0.500000 0.500000 0.500000        2
+Non-significant   0.877270 0.797000 0.835211     2000
+macro avg         0.622398 0.644554 0.629649     2613
+weighted avg      0.786408 0.759281 0.769137     2613
+accuracy 0.759281; balanced accuracy 0.644554; MCC 0.399492; kappa 0.393207; ROC-AUC 0.8532828384106681; PR-AUC 0.659528
+
+Split D - double-cold (unseen drugs and unseen compounds) - validation (n=2920)
+class              precision   recall       f1  support
+Avoid             0.349911 0.250636 0.292068      786
+Beneficial        0.000000 0.000000 0.000000        1
+Non-significant   0.750425 0.827473 0.787068     2133
+macro avg         0.366779 0.359370 0.359712     2920
+weighted avg      0.642359 0.671918 0.653555     2920
+accuracy 0.671918; balanced accuracy 0.359370; MCC 0.089933; kappa 0.087935; ROC-AUC 0.4101065654404457; PR-AUC 0.361233
+
+Split D - double-cold (unseen drugs and unseen compounds) - test (n=321)
+class              precision   recall       f1  support
+Avoid             0.145833 0.100000 0.118644       70
+Beneficial        0.000000 0.000000 0.000000        0
+Non-significant   0.769231 0.836653 0.801527      251
+macro avg         0.305021 0.312218 0.460085      321
+weighted avg      0.633287 0.676012 0.652611      321
+accuracy 0.676012; balanced accuracy 0.468327; MCC -0.073351; kappa -0.071442; ROC-AUC NA; PR-AUC 0.496110

@@ -1,0 +1,168 @@
+seed: 42
+
+paths:
+  drugs_raw: ../Druginfo.csv
+  interactions_raw: ../InteractionInformation.csv
+  foods_raw: ../food_fhdi_clean.csv
+  interim: data/interim
+  processed: data/processed
+  models: models
+  reports: reports
+  figures: figures
+
+data:
+  tanimoto_cutoff: 0.75
+  morgan_radius: 2
+  morgan_bits: 2048
+  protected_compounds:
+    - ethanol
+    - tyramine
+    - caffeine
+    - bergamottin
+    - naringin
+    - hyperforin
+    - phylloquinone
+    - vitamin k1
+    - dimethyl disulfide
+  metals:
+    - Li, Na, K, Rb, Cs, Fr, Be, Mg, Ca, Sr, Ba, Ra
+    - Sc, Ti, V, Cr, Mn, Fe, Co, Ni, Cu, Zn, Y, Zr, Nb, Mo, Tc, Ru, Rh, Pd, Ag, Cd
+    - Hf, Ta, W, Re, Os, Ir, Pt, Au, Hg, Al, Ga, In, Tl, Sn, Pb, Bi, Ge, Sb, Te, As
+  inorganic_names:
+    - calcium
+    - potassium
+    - sodium
+    - magnesium
+    - iron
+    - zinc
+    - copper
+    - manganese
+    - selenium
+    - iodine
+    - phosphorus
+    - aluminium
+    - aluminum
+
+labels:
+  effect_to_class:
+    Negative: 0
+    Harmful: 0
+    Positive: 1
+    No Effect: 2
+    Possible: 2
+    possible: 2
+  display:
+    0: Avoid together
+    1: Beneficial / take with food
+    2: No significant interaction
+  severity:
+    0: negative
+    1: positive
+    2: neutral
+  sentences:
+    0: "A should not be taken with food containing B."
+    1: "A could be taken with food containing B."
+    2: "A may be taken with food containing B."
+  disclaimer: "Research tool; confirm with a physician or pharmacist."
+  negative_precedence: true
+  mode_p_pairs_per_drug: 300
+  mode_s_weak_pairs_per_drug: 25
+  mode_s_weak_ratio: 0.5
+  mode_s_weak_max: 500
+  mode_s_food_max_frequency: 20
+  mode_s_food_max_compounds: 25
+  audit_sentences: 100
+
+features:
+  variance_threshold: 0.8
+  pearson_cutoff: 0.75
+  lasso_alpha: 0.01
+  target_features: 18
+  selection_sample: 40000
+  stability_runs: 3
+
+splits:
+  train_frac: 0.5008
+  val_frac: 0.375
+  test_frac: 0.1242
+
+models:
+  cv_folds: 5
+  search_iterations: 80
+  confidence_threshold: 0.6
+  class_weight: balanced
+  train_cap: 50000
+  weak_sample_weight: 0.5
+
+serving:
+  compound_frequency_cutoff: 20
+  max_marker_candidates: 12
+  max_food_candidates: 10
+  max_mineral_candidates: 10
+  max_marker_name_matches: 3
+  food_suffixes: [" juice", " raw", " fresh", " dried", " extract", " powder", " tea"]
+  aliases:
+    alcohol: ethanol
+    furanocoumarin: bergamottin
+    vitamin k1 2,3 epoxide: phylloquinone
+    vitamin k1: phylloquinone
+    grapefruit: bergamottin
+    grapefruit juice: bergamottin
+    dairy: calcium
+    st john's wort: hyperforin
+    st johns wort: hyperforin
+  smiles_fallback:
+    glucose: "OC[C@H]1OC(O)[C@H](O)[C@@H](O)[C@@H]1O"
+    dextrose: "OC[C@H]1OC(O)[C@H](O)[C@@H](O)[C@@H]1O"
+  food_markers:
+    grapefruit: [bergamottin, naringin, bergapten]
+    grape: [ascorbic acid, "(z)-resveratrol", catechin]
+    cranberry: ["(z)-resveratrol", catechin, proanthocyanidins, cyanidin]
+    pomegranate: [cyanidin, "ellagic acid"]
+    garlic: [allicin, "dimethyl disulfide"]
+    ginger: ["[4]-gingerol", methylgingerol]
+    turmeric: [curcumin]
+    st john: [hyperforin, hypericin]
+    milk: [calcium]
+    coffee: [caffeine]
+    tea: [caffeine, catechin]
+    spinach: [phylloquinone]
+    kale: [phylloquinone]
+    broccoli: [phylloquinone, sulforaphane]
+    soybean: [genistein, daidzein]
+    licorice: ["glycyrrhizic acid", glycyrrhizin]
+    alcohol: [ethanol]
+    ethanol: [ethanol]
+
+web:
+  examples:
+    - drug: chromium
+      food: grape
+      note: verified positive dataset example
+    - drug: warfarin
+      food: grapefruit juice
+      note: monitor INR
+    - drug: simvastatin
+      food: grapefruit
+      note: CYP3A4 inhibition
+    - drug: metronidazole
+      food: alcohol
+      note: disulfiram-like
+    - drug: warfarin
+      food: dimethyl disulfide
+      note: paper case
+    - drug: tetracycline
+      food: calcium
+      note: chelation
+    - drug: methotrexate
+      food: ethanol
+      note: abstention demo
+    - drug: warfarin
+      food: milk
+      note: dataset evidence
+    - drug: warfarin
+      food: glucose
+      note: control
+    - drug: warfarin
+      food: Cn1cnc2c1c(=O)n(C)c(=O)n2C
+      note: SMILES input

@@ -1,0 +1,128 @@
+{
+  "model_name": "LightGBM",
+  "model_version": "single-2026-11-16",
+  "artifact": "best_model_S.joblib",
+  "artifact_sha256_prefix": "c8d4f9dadf2d63b2",
+  "estimator_wrapper": "brick8_models.BalancedClassifier",
+  "estimator_class": "lightgbm.sklearn.LGBMClassifier",
+  "estimator_params": {
+    "boosting_type": "gbdt",
+    "class_weight": null,
+    "colsample_bytree": 1.0,
+    "importance_type": "split",
+    "learning_rate": 0.02,
+    "max_depth": -1,
+    "min_child_samples": 20,
+    "min_child_weight": 0.001,
+    "min_split_gain": 0.0,
+    "n_estimators": 200,
+    "n_jobs": -1,
+    "num_leaves": 127,
+    "objective": null,
+    "random_state": 42,
+    "reg_alpha": 0.0,
+    "reg_lambda": 0.0,
+    "subsample": 1.0,
+    "subsample_for_bin": 200000,
+    "subsample_freq": 0,
+    "verbose": -1
+  },
+  "sample_weight_recipe": "sklearn compute_sample_weight('balanced', y) multiplied by 0.5 for weak class-2 rows",
+  "class_balance": {
+    "recipe": "cap_2",
+    "train_counts": {
+      "0": 2277,
+      "1": 8,
+      "2": 4554
+    },
+    "selection_split": "Split G validation",
+    "capped_partition": "train only"
+  },
+  "training_split": "Split G train (drug-grouped), class-2 capped",
+  "selection_partition": "Split G train only",
+  "feature_count": 18,
+  "features": [
+    "MRVSA6*EstateVSA6",
+    "PEOEVSA5+PEOEVSA5",
+    "PEOEVSA6+PEOEVSA6",
+    "PEOEVSA7+PEOEVSA7",
+    "VSAEstate6+VSAEstate6",
+    "slogPVSA1/slogPVSA1",
+    "MRVSA5/MRVSA5",
+    "MRVSA9/MRVSA9",
+    "slogPVSA9*PEOEVSA8",
+    "MRVSA3*PEOEVSA8",
+    "MRVSA5*PEOEVSA10",
+    "slogPVSA5+slogPVSA5",
+    "slogPVSA7+slogPVSA7",
+    "slogPVSA9+slogPVSA9",
+    "slogPVSA11+slogPVSA11",
+    "VSAEstate2+VSAEstate2",
+    "abs(MRVSA5-MRVSA5)",
+    "abs(MRVSA6-MRVSA6)"
+  ],
+  "feature_selection_funnel": {
+    "start": 3780,
+    "after_variance": 3521,
+    "after_correlation": 1126,
+    "after_lasso": 174,
+    "after_rfecv": 89,
+    "rfe18": 18
+  },
+  "label_space": {
+    "0": "Avoid together",
+    "1": "Beneficial / take with food",
+    "2": "No significant interaction"
+  },
+  "calibration": {
+    "method": "temperature_scaling",
+    "temperature": 1.3405,
+    "fitted_on": "Split G validation (unseen drugs)",
+    "accept_threshold": 0.77,
+    "threshold_policy": "lowest threshold on validation with accepted error <= 0.20",
+    "threshold_target_error": 0.2
+  },
+  "applicability_domain": {
+    "fingerprint": {
+      "radius": 2,
+      "bits": 2048,
+      "type": "morgan"
+    },
+    "validated": true,
+    "drug": {
+      "threshold": 0.1856,
+      "rule": "10th percentile of validation similarities for unseen drugs (Split G validation)",
+      "validation_distribution": {
+        "count": 166,
+        "p05": 0.1524,
+        "p10": 0.1856,
+        "median": 0.2688,
+        "min": 0.0213,
+        "max": 0.9636
+      },
+      "reference_count": 223
+    },
+    "food": {
+      "threshold": 0.3333,
+      "rule": "10th percentile of validation similarities for unseen compounds (Split F validation)",
+      "validation_distribution": {
+        "count": 1716,
+        "p05": 0.2821,
+        "p10": 0.3333,
+        "median": 0.5556,
+        "min": 0.0811,
+        "max": 0.7477
+      },
+      "reference_count": 2291
+    },
+    "reference_counts": {
+      "drugs": 223,
+      "compounds": 2291
+    }
+  },
+  "serving_abstention": {
+    "coverage": 0.45339954163483576,
+    "accepted": 1187,
+    "accuracy_on_accepted": 0.8171861836562764
+  }
+}

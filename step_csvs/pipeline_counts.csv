@@ -1,0 +1,13 @@
+﻿step,stage,script,input_rows,output_rows,note
+1,raw drug audit,src/brick1_audit.py,1516,1516,read-only audit of the three raw CSVs
+2,drug cleaning,src/brick2_clean_drugs.py,1516,1359,79 parse failures/empty + 78 duplicate InChIKey14 removed
+3,food cleaning,src/brick3_clean_foods.py,13282,5022,309 InChIKey duplicates + 7942 Tanimoto near-duplicates at 0.75
+4,Mode S labeling,src/brick4_labels.py,21042,21042,11517 weak pairs; 23 case-study pairs held out
+5,MOE descriptor generation,src/brick5_features.py,6381,6236,60 descriptors per molecule; non-organic foods are excluded from training
+6,pair feature extraction,src/features.py (used by bricks 7-17),21042,20947,"3,780 pair features; 95 pairs dropped because the food is inorganic"
+7,feature selection,src/brick7_selection.py --mode S,3780,18,variance -> Pearson -> Lasso -> RFECV -> RFE18
+8,split assignment,src/brick6_splits.py,21042,21042,"Split R and Split G assigned for all 21,042 pairs"
+9,class-2 cap (training only),src/brick17_single_model.py,10495,6839,class 2 capped at 2 x class 0; validation and test keep the real distribution
+10,final model training,src/brick17_single_model.py --apply,6839,6839,one LightGBM model with 18 features; writes best_model_S.joblib
+11,evidence lookup,src/brick13_build_evidence.py,9525,9525,dataset evidence for exact pairs; not used as an ML feature
+12,test predictions,scripts/build_deliverables.py (deployed artifact),2618,2618,deployed best_model_S.joblib scored once on the Split G test pairs

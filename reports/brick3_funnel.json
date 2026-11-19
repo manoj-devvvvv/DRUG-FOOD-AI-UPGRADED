@@ -1,0 +1,17 @@
+{
+  "rows_loaded": 838492,
+  "raw_links": 838492,
+  "unique_compounds": 13282,
+  "moldb_smiles_equals_SMILES": 0,
+  "no_smiles": 1,
+  "parse_failures": 8,
+  "parsed_unique_compounds": 13273,
+  "duplicate_inchikey_removed": 309,
+  "protected_present_before_similarity": 7,
+  "near_duplicate_tanimoto_removed": 7942,
+  "kept_after_tanimoto": 5022,
+  "organic_compounds": 4877,
+  "inorganic_compounds": 145,
+  "protected_present_final": 7,
+  "final_links": 152320
+}

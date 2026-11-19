@@ -1,0 +1,299 @@
+{
+  "mode": "S",
+  "model": "LightGBM",
+  "features": [
+    "MRVSA6*EstateVSA6",
+    "PEOEVSA5+PEOEVSA5",
+    "PEOEVSA6+PEOEVSA6",
+    "PEOEVSA7+PEOEVSA7",
+    "VSAEstate6+VSAEstate6",
+    "slogPVSA1/slogPVSA1",
+    "MRVSA5/MRVSA5",
+    "MRVSA9/MRVSA9",
+    "slogPVSA9*PEOEVSA8",
+    "MRVSA3*PEOEVSA8",
+    "MRVSA5*PEOEVSA10",
+    "slogPVSA5+slogPVSA5",
+    "slogPVSA7+slogPVSA7",
+    "slogPVSA9+slogPVSA9",
+    "slogPVSA11+slogPVSA11",
+    "VSAEstate2+VSAEstate2",
+    "abs(MRVSA5-MRVSA5)",
+    "abs(MRVSA6-MRVSA6)"
+  ],
+  "splits": {
+    "G": {
+      "train_rows": 10495,
+      "test_rows": 2618,
+      "test_drugs": 55,
+      "confidence_sweep": [
+        {
+          "threshold": 0.5,
+          "coverage": 0.9908326967150497,
+          "answered": 2594,
+          "accuracy": 0.7559753276792598,
+          "negative_recall": 0.3186119873817035
+        },
+        {
+          "threshold": 0.6,
+          "coverage": 0.8846447669977082,
+          "answered": 2316,
+          "accuracy": 0.7810880829015544,
+          "negative_recall": 0.2919020715630885
+        },
+        {
+          "threshold": 0.7,
+          "coverage": 0.7734912146676852,
+          "answered": 2025,
+          "accuracy": 0.8004938271604938,
+          "negative_recall": 0.2557603686635945
+        },
+        {
+          "threshold": 0.8,
+          "coverage": 0.6233766233766234,
+          "answered": 1632,
+          "accuracy": 0.8223039215686274,
+          "negative_recall": 0.20064724919093851
+        },
+        {
+          "threshold": 0.9,
+          "coverage": 0.40718105423987777,
+          "answered": 1066,
+          "accuracy": 0.8461538461538461,
+          "negative_recall": 0.1751412429378531
+        }
+      ],
+      "per_drug_spread": {
+        "drugs": 55,
+        "median_accuracy": 0.8571428571428571,
+        "p10_accuracy": 0.49473684210526314,
+        "perfect_drugs": 12,
+        "zero_drugs": 0,
+        "worst": [
+          {
+            "drug_id": "D00997",
+            "accuracy": 0.2857142857142857,
+            "pairs": 28
+          },
+          {
+            "drug_id": "D00524",
+            "accuracy": 0.36283185840707965,
+            "pairs": 113
+          },
+          {
+            "drug_id": "D01307",
+            "accuracy": 0.3793103448275862,
+            "pairs": 29
+          },
+          {
+            "drug_id": "D00294",
+            "accuracy": 0.4230769230769231,
+            "pairs": 26
+          },
+          {
+            "drug_id": "D00636",
+            "accuracy": 0.46296296296296297,
+            "pairs": 54
+          }
+        ]
+      },
+      "accuracy": 0.7524828113063408,
+      "macro_f1": 0.5066351982060794,
+      "per_class": {
+        "0": {
+          "precision": 0.4963680387409201,
+          "recall": 0.3203125,
+          "f1": 0.38936372269705605,
+          "support": 640
+        },
+        "1": {
+          "precision": 0.16666666666666666,
+          "recall": 1.0,
+          "f1": 0.2857142857142857,
+          "support": 1
+        },
+        "2": {
+          "precision": 0.8021828103683493,
+          "recall": 0.8922610015174507,
+          "f1": 0.8448275862068966,
+          "support": 1977
+        }
+      },
+      "confusion_matrix": [
+        [
+          205,
+          0,
+          435
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          208,
+          5,
+          1764
+        ]
+      ],
+      "confusion_matrix_row_normalized": [
+        [
+          0.3203,
+          0.0,
+          0.6797
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.1052,
+          0.0025,
+          0.8923
+        ]
+      ]
+    },
+    "R": {
+      "train_rows": 10488,
+      "test_rows": 2597,
+      "test_drugs": 435,
+      "confidence_sweep": [
+        {
+          "threshold": 0.5,
+          "coverage": 0.9861378513669619,
+          "answered": 2561,
+          "accuracy": 0.8071065989847716,
+          "negative_recall": 0.7948717948717948
+        },
+        {
+          "threshold": 0.6,
+          "coverage": 0.8398151713515595,
+          "answered": 2181,
+          "accuracy": 0.8459422283356258,
+          "negative_recall": 0.8081632653061225
+        },
+        {
+          "threshold": 0.7,
+          "coverage": 0.6873315363881402,
+          "answered": 1785,
+          "accuracy": 0.8862745098039215,
+          "negative_recall": 0.8522427440633246
+        },
+        {
+          "threshold": 0.8,
+          "coverage": 0.5040431266846361,
+          "answered": 1309,
+          "accuracy": 0.9258976317799847,
+          "negative_recall": 0.8764044943820225
+        },
+        {
+          "threshold": 0.9,
+          "coverage": 0.2576049287639584,
+          "answered": 669,
+          "accuracy": 0.9566517189835575,
+          "negative_recall": 0.8761904761904762
+        }
+      ],
+      "per_drug_spread": {
+        "drugs": 435,
+        "median_accuracy": 1.0,
+        "p10_accuracy": 0.5,
+        "perfect_drugs": 220,
+        "zero_drugs": 11,
+        "worst": [
+          {
+            "drug_id": "D00001",
+            "accuracy": 0.0,
+            "pairs": 1
+          },
+          {
+            "drug_id": "D01119",
+            "accuracy": 0.0,
+            "pairs": 1
+          },
+          {
+            "drug_id": "D00307",
+            "accuracy": 0.0,
+            "pairs": 2
+          },
+          {
+            "drug_id": "D00371",
+            "accuracy": 0.0,
+            "pairs": 3
+          },
+          {
+            "drug_id": "D01455",
+            "accuracy": 0.0,
+            "pairs": 1
+          }
+        ]
+      },
+      "accuracy": 0.80361956103196,
+      "macro_f1": 0.5049338920698144,
+      "per_class": {
+        "0": {
+          "precision": 0.5537190082644629,
+          "recall": 0.788235294117647,
+          "f1": 0.6504854368932039,
+          "support": 595
+        },
+        "1": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 3
+        },
+        "2": {
+          "precision": 0.9272206303724928,
+          "recall": 0.8094047023511756,
+          "f1": 0.8643162393162394,
+          "support": 1999
+        }
+      },
+      "confusion_matrix": [
+        [
+          469,
+          0,
+          126
+        ],
+        [
+          2,
+          0,
+          1
+        ],
+        [
+          376,
+          5,
+          1618
+        ]
+      ],
+      "confusion_matrix_row_normalized": [
+        [
+          0.7882,
+          0.0,
+          0.2118
+        ],
+        [
+          0.6667,
+          0.0,
+          0.3333
+        ],
+        [
+          0.1881,
+          0.0025,
+          0.8094
+        ]
+      ]
+    }
+  },
+  "external_set": {
+    "status": "not obtained",
+    "substitute": "Split G test + the nine held-out case studies in Brick 11"
+  },
+  "paper_reference": {
+    "external_accuracy": 0.9756,
+    "internal_negative_recall": 0.8707,
+    "internal_negative_precision": 0.9822
+  }
+}

@@ -1,0 +1,262 @@
+{
+  "alcohol": {
+    "compounds": [
+      "ethanol"
+    ],
+    "foods": []
+  },
+  "alcoholic": {
+    "compounds": [
+      "ethanol"
+    ],
+    "foods": []
+  },
+  "ethanol": {
+    "compounds": [
+      "ethanol"
+    ],
+    "foods": []
+  },
+  "grapefruit": {
+    "compounds": [
+      "bergamottin",
+      "naringin",
+      "naringenin"
+    ],
+    "foods": [
+      "Grapefruit"
+    ]
+  },
+  "furanocoumarin": {
+    "compounds": [
+      "bergamottin",
+      "bergapten"
+    ],
+    "foods": []
+  },
+  "dairy": {
+    "compounds": [
+      "calcium"
+    ],
+    "foods": [
+      "Milk"
+    ]
+  },
+  "calcium": {
+    "compounds": [
+      "calcium"
+    ],
+    "foods": []
+  },
+  "vitamin k": {
+    "compounds": [
+      "phylloquinone",
+      "vitamin k1"
+    ],
+    "foods": []
+  },
+  "leafy green": {
+    "compounds": [
+      "phylloquinone"
+    ],
+    "foods": [
+      "Spinach",
+      "Kale",
+      "Broccoli"
+    ]
+  },
+  "tyramine": {
+    "compounds": [
+      "tyramine"
+    ],
+    "foods": []
+  },
+  "caffeine": {
+    "compounds": [
+      "caffeine"
+    ],
+    "foods": [
+      "Arabica Coffee",
+      "Black Tea"
+    ]
+  },
+  "coffee": {
+    "compounds": [
+      "caffeine"
+    ],
+    "foods": [
+      "Arabica Coffee"
+    ]
+  },
+  "tea": {
+    "compounds": [
+      "caffeine",
+      "catechin"
+    ],
+    "foods": [
+      "Black Tea",
+      "Green Tea"
+    ]
+  },
+  "iron": {
+    "compounds": [
+      "iron"
+    ],
+    "foods": []
+  },
+  "potassium": {
+    "compounds": [
+      "potassium"
+    ],
+    "foods": []
+  },
+  "sodium": {
+    "compounds": [
+      "sodium"
+    ],
+    "foods": []
+  },
+  "vitamin c": {
+    "compounds": [
+      "ascorbic acid",
+      "vitamin c"
+    ],
+    "foods": []
+  },
+  "vitamin d": {
+    "compounds": [
+      "vitamin d",
+      "cholecalciferol"
+    ],
+    "foods": []
+  },
+  "omega 3": {
+    "compounds": [
+      "docosahexaenoic acid",
+      "eicosapentaenoic acid"
+    ],
+    "foods": []
+  },
+  "fish oil": {
+    "compounds": [
+      "docosahexaenoic acid",
+      "eicosapentaenoic acid"
+    ],
+    "foods": [
+      "Anchovy",
+      "Atlantic Herring",
+      "Albacore Tuna"
+    ]
+  },
+  "quercetin": {
+    "compounds": [
+      "quercetin"
+    ],
+    "foods": []
+  },
+  "resveratrol": {
+    "compounds": [
+      "resveratrol"
+    ],
+    "foods": []
+  },
+  "curcumin": {
+    "compounds": [
+      "curcumin"
+    ],
+    "foods": []
+  },
+  "berberine": {
+    "compounds": [
+      "berberine"
+    ],
+    "foods": []
+  },
+  "hyperforin": {
+    "compounds": [
+      "hyperforin"
+    ],
+    "foods": [
+      "St John's Wort"
+    ]
+  },
+  "st john": {
+    "compounds": [
+      "hyperforin"
+    ],
+    "foods": []
+  },
+  "licorice": {
+    "compounds": [
+      "glycyrrhizin"
+    ],
+    "foods": [
+      "Licorice"
+    ]
+  },
+  "pomegranate": {
+    "compounds": [],
+    "foods": [
+      "Pomegranate"
+    ]
+  },
+  "broccoli": {
+    "compounds": [
+      "sulforaphane",
+      "phylloquinone"
+    ],
+    "foods": [
+      "Broccoli"
+    ]
+  },
+  "spinach": {
+    "compounds": [
+      "phylloquinone"
+    ],
+    "foods": [
+      "Spinach"
+    ]
+  },
+  "milk": {
+    "compounds": [
+      "calcium"
+    ],
+    "foods": [
+      "Milk"
+    ]
+  },
+  "cheese": {
+    "compounds": [
+      "calcium",
+      "tyramine"
+    ],
+    "foods": [
+      "Cheese"
+    ]
+  },
+  "soy": {
+    "compounds": [
+      "genistein",
+      "daidzein"
+    ],
+    "foods": [
+      "Soybean"
+    ]
+  },
+  "ginger": {
+    "compounds": [
+      "gingerol"
+    ],
+    "foods": [
+      "Ginger"
+    ]
+  },
+  "garlic": {
+    "compounds": [
+      "allicin"
+    ],
+    "foods": [
+      "Garlic"
+    ]
+  }
+}

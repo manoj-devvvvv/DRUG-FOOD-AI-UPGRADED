@@ -1,0 +1,13 @@
+model,partition,n,accuracy,balanced_accuracy,macro_f1,mcc,class_1_support
+majority_class,validation,7834,0.754,0.3333,0.2866,0.0,14
+majority_class,test,2618,0.7552,0.3333,0.2868,0.0,1
+logistic_balanced,validation,7834,0.6062,0.4762,0.3817,0.167,14
+logistic_balanced,test,2618,0.6211,0.7232,0.3932,0.2184,1
+lightgbm_unweighted,validation,7834,0.7686,0.3682,0.3586,0.2113,14
+lightgbm_unweighted,test,2618,0.7727,0.3721,0.3651,0.2297,1
+lightgbm_balanced,validation,7834,0.7531,0.435,0.4471,0.2165,14
+lightgbm_balanced,test,2618,0.7712,0.7363,0.5226,0.2786,1
+lightgbm_balanced_weak,validation,7834,0.7263,0.4388,0.4465,0.1954,14
+lightgbm_balanced_weak,test,2618,0.7525,0.7375,0.5066,0.2521,1
+lightgbm_balanced_oversampled,validation,7834,0.7365,0.4425,0.4328,0.2152,14
+lightgbm_balanced_oversampled,test,2618,0.762,0.7414,0.4907,0.2738,1

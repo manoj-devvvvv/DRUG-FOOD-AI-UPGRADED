@@ -1,0 +1,31 @@
+{
+  "0": [
+    "\\bavoid\\b",
+    "take .{0,30}separately from (meals|food)",
+    "empty stomach",
+    "before (a )?meals?",
+    "should not be (taken|used|co-administered)",
+    "do not (take|use|co-administer)",
+    "contraindicat",
+    "(lower|decrease|reduce|impair|inhibit)[a-z]* .{0,40}(absorption|bioavailability|exposure|concentration)",
+    "limit .{0,30}(intake|consumption)",
+    "serious (drug|food|herb).{0,20}interaction",
+    "life[- ]threatening"
+  ],
+  "1": [
+    "take with (food|meals?|milk)",
+    "with (meals?|food)",
+    "after (a )?meals?",
+    "(increase|enhance|improve)[a-z]* .{0,40}(absorption|bioavailability|exposure|efficacy)",
+    "(reduce|decrease|prevent)[a-z]* .{0,40}(irritation|nausea|gastrointestinal|gi side)",
+    "may be given with (food|milk)"
+  ],
+  "2": [
+    "with or without food",
+    "consistently with regard to food",
+    "no (significant )?(effect|interaction|change)",
+    "no difference",
+    "did not (affect|change|alter)",
+    "not (significantly )?(affected|changed|altered)"
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "2": [
+    "\\bno (significant )?(effect|interaction|change|difference)\\b",
+    "\\bdid not (affect|alter|change|inhibit|increase|decrease)\\b",
+    "\\bdoes not (affect|alter|change)\\b",
+    "\\bwith or without food\\b",
+    "\\bnot (significantly )?(affected|changed|altered)\\b",
+    "\\bwithout (any )?(significant )?(effect|change)\\b",
+    "\\bno difference\\b"
+  ],
+  "0": [
+    "\\bavoid\\b",
+    "\\btake .{0,30}separately from (meals|food)\\b",
+    "\\bempty stomach\\b",
+    "\\bbefore (a )?meals?\\b",
+    "\\bshould not be (taken|used|co-administered)\\b",
+    "\\bdo not (take|use|co-administer)\\b",
+    "\\bcontraindicat",
+    "\\b(lower|decrease|reduce|impair|inhibit|prevent)[a-z]* .{0,40}(absorption|bioavailability|exposure|concentration|clearance|metabolism)\\b",
+    "\\blimit .{0,30}(intake|consumption)\\b",
+    "\\bserious (drug|food|herb).{0,20}interaction\\b",
+    "\\blife[- ]threatening\\b",
+    "\\bmonitor\\b",
+    "\\bcaution\\b",
+    "\\badjust (the )?dose\\b",
+    "\\b(increase|elevate)[a-z]* .{0,30}(plasma|serum|blood|inr)\\b",
+    "\\b(bleeding|haemorrhage|hemorrhage)\\b",
+    "\\bpotentiat",
+    "\\bantagoniz",
+    "\\b(at )?risk (of|for)\\b",
+    "\\breduce .{0,30}(effectiveness|efficacy)\\b",
+    "\\bcan (slightly )?affect\\b"
+  ],
+  "1": [
+    "\\btake with (foods?|meals?|milk)\\b",
+    "\\bwith (meals?|food)\\b",
+    "\\bafter (a )?meals?\\b",
+    "\\bmay be given with (food|milk)\\b",
+    "\\b(improve|enhance)[a-z]* .{0,40}(efficacy|tolerability)\\b",
+    "\\b(reduce|decrease|prevent)[a-z]* .{0,40}(irritation|nausea|gastrointestinal|gi side)\\b",
+    "\\b(increase|enhance)[a-z]* .{0,40}absorption of (iron|vitamin|chromium|calcium)\\b"
+  ]
+}

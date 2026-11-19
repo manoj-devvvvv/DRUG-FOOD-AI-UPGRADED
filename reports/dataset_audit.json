@@ -1,0 +1,291 @@
+{
+  "date": "2026-11-15",
+  "raw": {
+    "drug_rows": 1516,
+    "drugs_with_smiles": 1437,
+    "interaction_rows": 23950,
+    "food_compound_links": 838492,
+    "unique_food_ids": 177,
+    "unique_compounds": 13282,
+    "effect_counts": {
+      "Possible": 17827,
+      "No Effect": 2374,
+      "Positive": 1915,
+      "Negative": 1437,
+      "Harmful": 393,
+      "possible": 4
+    }
+  },
+  "cleaned": {
+    "drugs": 1359,
+    "drugs_missing_smiles": 0,
+    "compounds": 5022,
+    "organic_compounds": 4877,
+    "inorganic_compounds": 145,
+    "compounds_missing_smiles": 0,
+    "drug_funnel": null,
+    "compound_funnel": null
+  },
+  "pair_integrity": {
+    "duplicate_pair_keys": 0,
+    "conflicting_pair_labels": 0,
+    "note": "One row per (mode, drug, compound); negative precedence resolves repeats before this check."
+  },
+  "modes": {
+    "P": {
+      "pairs": 407699,
+      "unique_drugs": 1359,
+      "unique_compounds": 4877,
+      "class_counts": {
+        "0": 229499,
+        "1": 65100,
+        "2": 113100
+      },
+      "nonweak_class_counts": {
+        "0": 229499,
+        "1": 65100,
+        "2": 113100
+      },
+      "weak_pairs": 0
+    },
+    "S": {
+      "pairs": 21042,
+      "unique_drugs": 444,
+      "unique_compounds": 4572,
+      "class_counts": {
+        "0": 4898,
+        "1": 24,
+        "2": 16120
+      },
+      "nonweak_class_counts": {
+        "0": 4898,
+        "1": 24,
+        "2": 4603
+      },
+      "weak_pairs": 11517
+    }
+  },
+  "positive_class_funnel_mode_s": {
+    "interaction_rows_after_drug_filter": 23307,
+    "effect_row_counts": {
+      "possible": 17363,
+      "no effect": 2324,
+      "positive": 1822,
+      "negative": 1406,
+      "harmful": 392
+    },
+    "positive_rows": 1822,
+    "positive_rows_with_component": 1319,
+    "positive_rows_labelled_1_after_correction": 646,
+    "positive_rows_labelled_0_after_correction": 1084,
+    "unique_positive_pairs_mode_s": 24,
+    "unique_positive_drugs_mode_s": 14,
+    "positive_pairs_by_source_effect": {
+      "positive": 12,
+      "possible": 12
+    },
+    "positive_pairs_sample": [
+      {
+        "drug_id": "D00878",
+        "compound_id": 1223,
+        "effect_norm": "positive",
+        "Conclusion": "Take with foods containing vitamin C."
+      },
+      {
+        "drug_id": "D00511",
+        "compound_id": 1223,
+        "effect_norm": "positive",
+        "Conclusion": "Take with foods containing vitamin C."
+      },
+      {
+        "drug_id": "D00508",
+        "compound_id": 1223,
+        "effect_norm": "positive",
+        "Conclusion": "Take with foods containing vitamin C. Vitamin C may increase the absorption of chromium."
+      },
+      {
+        "drug_id": "D00799",
+        "compound_id": 1223,
+        "effect_norm": "positive",
+        "Conclusion": "Take with foods containing vitamin C."
+      },
+      {
+        "drug_id": "D00611",
+        "compound_id": 1223,
+        "effect_norm": "positive",
+        "Conclusion": "Take with foods containing vitamin C. "
+      },
+      {
+        "drug_id": "D01455",
+        "compound_id": 1223,
+        "effect_norm": "positive",
+        "Conclusion": "Take with foods containing vitamin C."
+      },
+      {
+        "drug_id": "D00453",
+        "compound_id": 1223,
+        "effect_norm": "positive",
+        "Conclusion": "Take with foods containing vitamin C. Foods rich in vitamin C increase the absorption of iron."
+      },
+      {
+        "drug_id": "D00968",
+        "compound_id": 1223,
+        "effect_norm": "positive",
+        "Conclusion": "Take with foods containing vitamin C."
+      },
+      {
+        "drug_id": "D01458",
+        "compound_id": 3514,
+        "effect_norm": "possible",
+        "Conclusion": "Take with food."
+      },
+      {
+        "drug_id": "D00159",
+        "compound_id": 3192,
+        "effect_norm": "possible",
+        "Conclusion": "Polysaccharides from Lentinus edodes could enhance the efficacy of 5-FU-mediated H22 cell growth inhibition."
+      },
+      {
+        "drug_id": "D00159",
+        "compound_id": 3492,
+        "effect_norm": "possible",
+        "Conclusion": "Polysaccharides from Lentinus edodes could enhance the efficacy of 5-FU-mediated H22 cell growth inhibition."
+      },
+      {
+        "drug_id": "D00159",
+        "compound_id": 12461,
+        "effect_norm": "possible",
+        "Conclusion": "Polysaccharides from Lentinus edodes could enhance the efficacy of 5-FU-mediated H22 cell growth inhibition."
+      },
+      {
+        "drug_id": "D00159",
+        "compound_id": 15486,
+        "effect_norm": "possible",
+        "Conclusion": "Polysaccharides from Lentinus edodes could enhance the efficacy of 5-FU-mediated H22 cell growth inhibition."
+      },
+      {
+        "drug_id": "D00542",
+        "compound_id": 15170,
+        "effect_norm": "possible",
+        "Conclusion": "Decrease P-gp and CYP3A2 protein level,The results of this study suggest that combination of PTX and CUR, administered in nanoemulsions, could improve oral bioavailability and therapeutic efficacy in ovarian adenocarcinoma."
+      },
+      {
+        "drug_id": "D00542",
+        "compound_id": 125157,
+        "effect_norm": "possible",
+        "Conclusion": "Decrease P-gp and CYP3A2 protein level,The results of this study suggest that combination of PTX and CUR, administered in nanoemulsions, could improve oral bioavailability and therapeutic efficacy in ovarian adenocarcinoma."
+      },
+      {
+        "drug_id": "D00542",
+        "compound_id": 13045,
+        "effect_norm": "possible",
+        "Conclusion": "Decrease P-gp and CYP3A2 protein level,The results of this study suggest that combination of PTX and CUR, administered in nanoemulsions, could improve oral bioavailability and therapeutic efficacy in ovarian adenocarcinoma."
+      },
+      {
+        "drug_id": "D00542",
+        "compound_id": 15803,
+        "effect_norm": "possible",
+        "Conclusion": "Decrease P-gp and CYP3A2 protein level,The results of this study suggest that combination of PTX and CUR, administered in nanoemulsions, could improve oral bioavailability and therapeutic efficacy in ovarian adenocarcinoma."
+      },
+      {
+        "drug_id": "D00542",
+        "compound_id": 1532,
+        "effect_norm": "possible",
+        "Conclusion": "Decrease P-gp and CYP3A2 protein level,The results of this study suggest that combination of PTX and CUR, administered in nanoemulsions, could improve oral bioavailability and therapeutic efficacy in ovarian adenocarcinoma."
+      },
+      {
+        "drug_id": "D00542",
+        "compound_id": 125071,
+        "effect_norm": "possible",
+        "Conclusion": "Decrease P-gp and CYP3A2 protein level,The results of this study suggest that combination of PTX and CUR, administered in nanoemulsions, could improve oral bioavailability and therapeutic efficacy in ovarian adenocarcinoma."
+      },
+      {
+        "drug_id": "D01167",
+        "compound_id": 11942,
+        "effect_norm": "positive",
+        "Conclusion": "Taken at least 1 h before or at least 2 h after a meal "
+      },
+      {
+        "drug_id": "D01167",
+        "compound_id": 11869,
+        "effect_norm": "positive",
+        "Conclusion": "Taken at least 1 h before or at least 2 h after a meal "
+      },
+      {
+        "drug_id": "D01167",
+        "compound_id": 2542,
+        "effect_norm": "positive",
+        "Conclusion": "Taken at least 1 h before or at least 2 h after a meal "
+      },
+      {
+        "drug_id": "D00594",
+        "compound_id": 2798,
+        "effect_norm": "possible",
+        "Conclusion": "The combination of gemcitabine and apigenin enhanced anti-tumor efficacy through Akt and NF-kappa B activity suppression and apoptosis induction."
+      },
+      {
+        "drug_id": "D00116",
+        "compound_id": 12389,
+        "effect_norm": "positive",
+        "Conclusion": "The results suggest that the altered pharmacokinetics of DIC might be attributed to RSV mediated inhibition of CYP2C9 enzyme. Therefore, combination therapy of DIC along with RSV may represent a novel approach to reduce dosage and results in reduced gastrointestinal side effects of DIC"
+      }
+    ]
+  },
+  "evidence_quality": {
+    "S": {
+      "structured_effect_annotation": 5605,
+      "text_rule_derived": 3920
+    },
+    "P": {
+      "drug_level_annotation_applied_to_compound": 407699
+    }
+  },
+  "sentence_audit": {
+    "sampled": 100,
+    "possible_rows": 76,
+    "confirmed_rows": 24,
+    "rule_fired_all": 63,
+    "rule_coverage_all": 0.63,
+    "confirmed_rule_fired": 15,
+    "confirmed_agreement": 0.6,
+    "possible_rule_fired": 48,
+    "possible_rule_coverage": 0.631578947368421,
+    "raw_agreement_vs_effect_on_fired": 0.14285714285714285,
+    "note": "Confirmed rows test the rules against experimental annotations. Possible rows are labelled from the text rules by design, so their agreement is circular; coverage is reported instead. The CSV in reports/ has an empty manual_label column for the human 100-sentence audit."
+  },
+  "external_datasets": [
+    {
+      "name": "FHDI (current source)",
+      "origin": "Food-Herb-Drug Interaction database distributed as Druginfo.csv / InteractionInformation.csv / food_fhdi_clean.csv",
+      "license": "Not redistributed here; verify upstream terms before publication.",
+      "labels": "Effect column {Positive, Negative, Harmful, No Effect, Possible} + free-text Conclusion",
+      "relevance": "Already used; supplies the 24 positive Mode S pairs.",
+      "status": "in use"
+    },
+    {
+      "name": "Ryu et al. drug-food interaction supplementary set",
+      "origin": "Published drug-food interaction prediction study; supplementary tables",
+      "license": "Unknown until verified from the publication",
+      "labels": "Binary or three-class drug-food interaction labels",
+      "relevance": "Could add drug-food pairs, but label semantics must be mapped and audited first.",
+      "status": "not downloaded"
+    },
+    {
+      "name": "DrugBank food-interaction fields (academic release)",
+      "origin": "DrugBank academic download",
+      "license": "Academic/non-commercial terms; account required",
+      "labels": "Free-text food interaction descriptions",
+      "relevance": "Could support rule/evidence provenance, not automatically a balanced training set.",
+      "status": "not downloaded"
+    },
+    {
+      "name": "FooDB / USDA food composition",
+      "origin": "FooDB compound tables",
+      "license": "Verify upstream license; non-commercial terms are common",
+      "labels": "None (compound composition only)",
+      "relevance": "Already represented by the current compound links; no interaction labels.",
+      "status": "not downloaded"
+    }
+  ],
+  "external_data_policy": "No external records were ingested. Any future source must be normalized, audited for duplicates/conflicts, and kept in a separate processed file; synthetic labels are never treated as verified evidence."
+}

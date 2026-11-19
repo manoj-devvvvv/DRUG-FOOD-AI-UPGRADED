@@ -1,0 +1,17 @@
+{
+  "counts": {
+    "start": 3780,
+    "after_variance": 3521,
+    "after_correlation": 1126,
+    "after_lasso": 174,
+    "after_rfecv": 89,
+    "rfe18": 18
+  },
+  "timings": {
+    "variance": 0.9,
+    "correlation": 3.1,
+    "lasso": 1.9,
+    "rfe": 17.9
+  },
+  "sample_rows": 10495
+}

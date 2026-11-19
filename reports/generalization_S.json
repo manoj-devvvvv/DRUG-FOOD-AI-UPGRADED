@@ -1,0 +1,718 @@
+{
+  "mode": "S",
+  "model": "LightGBM (fixed tuned configuration, balanced class weights, weak weight 0.5, class-2 cap 2.0)",
+  "class_2_cap": 2.0,
+  "features": [
+    "MRVSA6*EstateVSA6",
+    "PEOEVSA5+PEOEVSA5",
+    "PEOEVSA6+PEOEVSA6",
+    "PEOEVSA7+PEOEVSA7",
+    "VSAEstate6+VSAEstate6",
+    "slogPVSA1/slogPVSA1",
+    "MRVSA5/MRVSA5",
+    "MRVSA9/MRVSA9",
+    "slogPVSA9*PEOEVSA8",
+    "MRVSA3*PEOEVSA8",
+    "MRVSA5*PEOEVSA10",
+    "slogPVSA5+slogPVSA5",
+    "slogPVSA7+slogPVSA7",
+    "slogPVSA9+slogPVSA9",
+    "slogPVSA11+slogPVSA11",
+    "VSAEstate2+VSAEstate2",
+    "abs(MRVSA5-MRVSA5)",
+    "abs(MRVSA6-MRVSA6)"
+  ],
+  "params": {
+    "num_leaves": 127,
+    "n_estimators": 200,
+    "min_child_samples": 20,
+    "max_depth": -1,
+    "learning_rate": 0.02
+  },
+  "partitions": {
+    "R": {
+      "description": "pair-random (same drugs can appear on both sides)",
+      "counts": {
+        "train": {
+          "rows": 10537,
+          "class_counts": {
+            "0": 2453,
+            "1": 12,
+            "2": 8072
+          },
+          "drugs": 444,
+          "compounds": 3773
+        },
+        "val": {
+          "rows": 7891,
+          "class_counts": {
+            "0": 1837,
+            "1": 9,
+            "2": 6045
+          },
+          "drugs": 444,
+          "compounds": 3331
+        },
+        "test": {
+          "rows": 2614,
+          "class_counts": {
+            "0": 608,
+            "1": 3,
+            "2": 2003
+          },
+          "drugs": 435,
+          "compounds": 1703
+        }
+      },
+      "metrics": {
+        "validation": {
+          "support": 7862,
+          "class_counts": {
+            "0": 1816,
+            "1": 8,
+            "2": 6038
+          },
+          "accuracy": 0.7818621215975579,
+          "balanced_accuracy": 0.6050841002578383,
+          "macro_precision": 0.5366761352106039,
+          "macro_recall": 0.6050841002578383,
+          "macro_f1": 0.5574320174331534,
+          "weighted_f1": 0.7948177327001227,
+          "mcc": 0.499673332838749,
+          "cohen_kappa": 0.4800157067432864,
+          "per_class": {
+            "0": {
+              "precision": 0.5212609970674487,
+              "recall": 0.7830396475770925,
+              "f1": 0.6258802816901409,
+              "support": 1816
+            },
+            "1": {
+              "precision": 0.16666666666666666,
+              "recall": 0.25,
+              "f1": 0.2,
+              "support": 8
+            },
+            "2": {
+              "precision": 0.9221007418976962,
+              "recall": 0.7822126531964226,
+              "f1": 0.846415770609319,
+              "support": 6038
+            }
+          },
+          "confusion_matrix": [
+            [
+              1422,
+              1,
+              393
+            ],
+            [
+              0,
+              2,
+              6
+            ],
+            [
+              1306,
+              9,
+              4723
+            ]
+          ],
+          "roc_auc_ovr_macro": 0.8882673973025023,
+          "pr_auc_macro": 0.5875602803598373,
+          "pr_auc_per_class": {
+            "0": 0.6858315989721837,
+            "1": 0.13127656953095768,
+            "2": 0.9455726725763705
+          },
+          "note": "Class 1 has only 8 examples; class-1 metrics are unreliable."
+        },
+        "test": {
+          "support": 2597,
+          "class_counts": {
+            "0": 595,
+            "1": 3,
+            "2": 1999
+          },
+          "accuracy": 0.7770504428186369,
+          "balanced_accuracy": 0.6363134882100246,
+          "macro_precision": 0.5360787281646111,
+          "macro_recall": 0.6363134882100246,
+          "macro_f1": 0.5633327306237909,
+          "weighted_f1": 0.7917238206387016,
+          "mcc": 0.5036891839412783,
+          "cohen_kappa": 0.4784992255503864,
+          "per_class": {
+            "0": {
+              "precision": 0.5111821086261981,
+              "recall": 0.8067226890756303,
+              "f1": 0.6258148631029987,
+              "support": 595
+            },
+            "1": {
+              "precision": 0.16666666666666666,
+              "recall": 0.3333333333333333,
+              "f1": 0.2222222222222222,
+              "support": 3
+            },
+            "2": {
+              "precision": 0.9303874092009685,
+              "recall": 0.7688844422211105,
+              "f1": 0.8419611065461517,
+              "support": 1999
+            }
+          },
+          "confusion_matrix": [
+            [
+              480,
+              0,
+              115
+            ],
+            [
+              2,
+              1,
+              0
+            ],
+            [
+              457,
+              5,
+              1537
+            ]
+          ],
+          "roc_auc_ovr_macro": 0.9042858977043086,
+          "pr_auc_macro": 0.5962957640843382,
+          "pr_auc_per_class": {
+            "0": 0.6867430460649145,
+            "1": 0.15457769181173434,
+            "2": 0.9475665543763658
+          },
+          "note": "Class 1 has only 3 examples; class-1 metrics are unreliable."
+        }
+      }
+    },
+    "G": {
+      "description": "unseen drugs (whole-drug groups)",
+      "counts": {
+        "train": {
+          "rows": 10537,
+          "class_counts": {
+            "0": 2304,
+            "1": 9,
+            "2": 8224
+          },
+          "drugs": 223,
+          "compounds": 3796
+        },
+        "val": {
+          "rows": 7872,
+          "class_counts": {
+            "0": 1943,
+            "1": 14,
+            "2": 5915
+          },
+          "drugs": 166,
+          "compounds": 3390
+        },
+        "test": {
+          "rows": 2633,
+          "class_counts": {
+            "0": 651,
+            "1": 1,
+            "2": 1981
+          },
+          "drugs": 55,
+          "compounds": 1745
+        }
+      },
+      "metrics": {
+        "validation": {
+          "support": 7834,
+          "class_counts": {
+            "0": 1913,
+            "1": 14,
+            "2": 5907
+          },
+          "accuracy": 0.6881541996425836,
+          "balanced_accuracy": 0.44232215222236454,
+          "macro_precision": 0.42270101889067174,
+          "macro_recall": 0.44232215222236454,
+          "macro_f1": 0.43040803075122763,
+          "weighted_f1": 0.6918690117914512,
+          "mcc": 0.18194271855239974,
+          "cohen_kappa": 0.18174984501592606,
+          "per_class": {
+            "0": {
+              "precision": 0.37622309197651665,
+              "recall": 0.40198640878201775,
+              "f1": 0.38867829163507706,
+              "support": 1913
+            },
+            "1": {
+              "precision": 0.09090909090909091,
+              "recall": 0.14285714285714285,
+              "f1": 0.1111111111111111,
+              "support": 14
+            },
+            "2": {
+              "precision": 0.8009708737864077,
+              "recall": 0.7821229050279329,
+              "f1": 0.7914346895074946,
+              "support": 5907
+            }
+          },
+          "confusion_matrix": [
+            [
+              769,
+              5,
+              1139
+            ],
+            [
+              3,
+              2,
+              9
+            ],
+            [
+              1272,
+              15,
+              4620
+            ]
+          ],
+          "roc_auc_ovr_macro": 0.6245835301939847,
+          "pr_auc_macro": 0.45483209129082364,
+          "pr_auc_per_class": {
+            "0": 0.4037256977833231,
+            "1": 0.14803547271586312,
+            "2": 0.8127351033732847
+          },
+          "note": null
+        },
+        "test": {
+          "support": 2618,
+          "class_counts": {
+            "0": 640,
+            "1": 1,
+            "2": 1977
+          },
+          "accuracy": 0.726890756302521,
+          "balanced_accuracy": 0.7427826251896814,
+          "macro_precision": 0.4579031465093412,
+          "macro_recall": 0.7427826251896814,
+          "macro_f1": 0.48647779279496,
+          "weighted_f1": 0.7227033468931716,
+          "mcc": 0.24080471238278317,
+          "cohen_kappa": 0.2403303818335445,
+          "per_class": {
+            "0": {
+              "precision": 0.4375,
+              "recall": 0.39375,
+              "f1": 0.4144736842105263,
+              "support": 640
+            },
+            "1": {
+              "precision": 0.125,
+              "recall": 1.0,
+              "f1": 0.2222222222222222,
+              "support": 1
+            },
+            "2": {
+              "precision": 0.8112094395280236,
+              "recall": 0.834597875569044,
+              "f1": 0.8227374719521316,
+              "support": 1977
+            }
+          },
+          "confusion_matrix": [
+            [
+              252,
+              4,
+              384
+            ],
+            [
+              0,
+              1,
+              0
+            ],
+            [
+              324,
+              3,
+              1650
+            ]
+          ],
+          "roc_auc_ovr_macro": 0.7669632011579517,
+          "pr_auc_macro": 0.4964628166416256,
+          "pr_auc_per_class": {
+            "0": 0.42226770349289533,
+            "1": 0.25,
+            "2": 0.8171207464319816
+          },
+          "note": "Class 1 has only 1 examples; class-1 metrics are unreliable."
+        }
+      }
+    },
+    "F": {
+      "description": "unseen food compounds (whole-compound groups)",
+      "counts": {
+        "train": {
+          "rows": 10537,
+          "class_counts": {
+            "0": 2489,
+            "1": 6,
+            "2": 8042
+          },
+          "drugs": 444,
+          "compounds": 2291
+        },
+        "val": {
+          "rows": 7891,
+          "class_counts": {
+            "0": 1797,
+            "1": 16,
+            "2": 6078
+          },
+          "drugs": 444,
+          "compounds": 1716
+        },
+        "test": {
+          "rows": 2614,
+          "class_counts": {
+            "0": 612,
+            "1": 2,
+            "2": 2000
+          },
+          "drugs": 437,
+          "compounds": 565
+        }
+      },
+      "metrics": {
+        "validation": {
+          "support": 7837,
+          "class_counts": {
+            "0": 1761,
+            "1": 15,
+            "2": 6061
+          },
+          "accuracy": 0.761133086640296,
+          "balanced_accuracy": 0.5090859309931339,
+          "macro_precision": 0.5125509070627411,
+          "macro_recall": 0.5090859309931339,
+          "macro_f1": 0.4973579127457122,
+          "weighted_f1": 0.7730648184438508,
+          "mcc": 0.4124992420596214,
+          "cohen_kappa": 0.4021990932216222,
+          "per_class": {
+            "0": {
+              "precision": 0.48050365556458163,
+              "recall": 0.6717773992049971,
+              "f1": 0.5602652143026284,
+              "support": 1761
+            },
+            "1": {
+              "precision": 0.16666666666666666,
+              "recall": 0.06666666666666667,
+              "f1": 0.09523809523809523,
+              "support": 15
+            },
+            "2": {
+              "precision": 0.8904823989569752,
+              "recall": 0.788813727107738,
+              "f1": 0.836570428696413,
+              "support": 6061
+            }
+          },
+          "confusion_matrix": [
+            [
+              1183,
+              2,
+              576
+            ],
+            [
+              2,
+              1,
+              12
+            ],
+            [
+              1277,
+              3,
+              4781
+            ]
+          ],
+          "roc_auc_ovr_macro": 0.7656050155220305,
+          "pr_auc_macro": 0.525268289119423,
+          "pr_auc_per_class": {
+            "0": 0.5750442658642584,
+            "1": 0.07713436268231955,
+            "2": 0.923626238811691
+          },
+          "note": null
+        },
+        "test": {
+          "support": 2613,
+          "class_counts": {
+            "0": 611,
+            "1": 2,
+            "2": 2000
+          },
+          "accuracy": 0.7592805204745503,
+          "balanced_accuracy": 0.6445537370430987,
+          "macro_precision": 0.6223982196320136,
+          "macro_recall": 0.6445537370430987,
+          "macro_f1": 0.6296491844719152,
+          "weighted_f1": 0.7691369664402448,
+          "mcc": 0.39949172012020684,
+          "cohen_kappa": 0.3932074911643557,
+          "per_class": {
+            "0": {
+              "precision": 0.4899244332493703,
+              "recall": 0.6366612111292962,
+              "f1": 0.5537366548042705,
+              "support": 611
+            },
+            "1": {
+              "precision": 0.5,
+              "recall": 0.5,
+              "f1": 0.5,
+              "support": 2
+            },
+            "2": {
+              "precision": 0.8772702256466703,
+              "recall": 0.797,
+              "f1": 0.835210898611475,
+              "support": 2000
+            }
+          },
+          "confusion_matrix": [
+            [
+              389,
+              0,
+              222
+            ],
+            [
+              0,
+              1,
+              1
+            ],
+            [
+              405,
+              1,
+              1594
+            ]
+          ],
+          "roc_auc_ovr_macro": 0.8532828384106681,
+          "pr_auc_macro": 0.6595283146445987,
+          "pr_auc_per_class": {
+            "0": 0.5394824412286442,
+            "1": 0.5263157894736842,
+            "2": 0.9127867132314678
+          },
+          "note": "Class 1 has only 2 examples; class-1 metrics are unreliable."
+        }
+      }
+    },
+    "D": {
+      "description": "double-cold (drug and compound groups both unseen)",
+      "counts": {
+        "train": {
+          "rows": 5259,
+          "class_counts": {
+            "0": 1078,
+            "1": 8,
+            "2": 4173
+          },
+          "drugs": 223,
+          "compounds": 1857
+        },
+        "val": {
+          "rows": 2937,
+          "class_counts": {
+            "0": 797,
+            "1": 1,
+            "2": 2139
+          },
+          "drugs": 166,
+          "compounds": 1266
+        },
+        "test": {
+          "rows": 321,
+          "class_counts": {
+            "0": 70,
+            "1": 0,
+            "2": 251
+          },
+          "drugs": 55,
+          "compounds": 220
+        }
+      },
+      "metrics": {
+        "validation": {
+          "support": 2920,
+          "class_counts": {
+            "0": 786,
+            "1": 1,
+            "2": 2133
+          },
+          "accuracy": 0.6719178082191781,
+          "balanced_accuracy": 0.35936972499281256,
+          "macro_precision": 0.3667787867071044,
+          "macro_recall": 0.35936972499281256,
+          "macro_f1": 0.35971206770832903,
+          "weighted_f1": 0.6535553622133318,
+          "mcc": 0.08993282017358757,
+          "cohen_kappa": 0.08793467100915187,
+          "per_class": {
+            "0": {
+              "precision": 0.34991119005328597,
+              "recall": 0.2506361323155216,
+              "f1": 0.2920681986656783,
+              "support": 786
+            },
+            "1": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "support": 1
+            },
+            "2": {
+              "precision": 0.7504251700680272,
+              "recall": 0.8274730426629161,
+              "f1": 0.7870680044593088,
+              "support": 2133
+            }
+          },
+          "confusion_matrix": [
+            [
+              197,
+              3,
+              586
+            ],
+            [
+              0,
+              0,
+              1
+            ],
+            [
+              366,
+              2,
+              1765
+            ]
+          ],
+          "roc_auc_ovr_macro": 0.4101065654404457,
+          "pr_auc_macro": 0.36123349819442296,
+          "pr_auc_per_class": {
+            "0": 0.3208005578183726,
+            "1": 0.00038491147036181676,
+            "2": 0.7625150252945346
+          },
+          "note": "Class 1 has only 1 examples; class-1 metrics are unreliable."
+        },
+        "test": {
+          "support": 321,
+          "class_counts": {
+            "0": 70,
+            "1": 0,
+            "2": 251
+          },
+          "accuracy": 0.67601246105919,
+          "balanced_accuracy": 0.46832669322709164,
+          "macro_precision": 0.30502136752136755,
+          "macro_recall": 0.3122177954847278,
+          "macro_f1": 0.46008539267693105,
+          "weighted_f1": 0.6526114979832801,
+          "mcc": -0.07335121996967005,
+          "cohen_kappa": -0.07144232620835744,
+          "per_class": {
+            "0": {
+              "precision": 0.14583333333333334,
+              "recall": 0.1,
+              "f1": 0.11864406779661017,
+              "support": 70
+            },
+            "1": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "support": 0
+            },
+            "2": {
+              "precision": 0.7692307692307693,
+              "recall": 0.8366533864541833,
+              "f1": 0.8015267175572519,
+              "support": 251
+            }
+          },
+          "confusion_matrix": [
+            [
+              7,
+              0,
+              63
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              41,
+              0,
+              210
+            ]
+          ],
+          "roc_auc_ovr_macro": null,
+          "pr_auc_macro": 0.49610956655992,
+          "pr_auc_per_class": {
+            "0": 0.2049444661147044,
+            "2": 0.7872746670051356
+          },
+          "note": "Class 1 has no examples in this evaluation partition; class-1 metrics are not meaningful."
+        }
+      }
+    }
+  },
+  "leakage_checks": {
+    "R": {},
+    "G": {
+      "drug": {
+        "train_val": 0,
+        "train_test": 0,
+        "val_test": 0
+      }
+    },
+    "F": {
+      "compound": {
+        "train_val": 0,
+        "train_test": 0,
+        "val_test": 0
+      }
+    },
+    "D": {
+      "drug": {
+        "train_val": 0,
+        "train_test": 0,
+        "val_test": 0
+      },
+      "compound": {
+        "train_val": 0,
+        "train_test": 0,
+        "val_test": 0
+      }
+    }
+  },
+  "double_cold_construction": {
+    "kept": 8517,
+    "dropped": 12525,
+    "drugs": {
+      "train": 223,
+      "val": 166,
+      "test": 55
+    },
+    "compounds": {
+      "train": 2291,
+      "val": 1716,
+      "test": 565
+    }
+  },
+  "limitations": [
+    "Split R is an easier diagnostic because drugs repeat across partitions.",
+    "Split F holds out compounds but drugs repeat.",
+    "Split D drops pairs whose drug and compound partitions differ, so its size is limited.",
+    "Class 1 support is tiny in Mode S; class-1 metrics are unreliable wherever support < 10."
+  ]
+}

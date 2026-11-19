@@ -1,0 +1,13 @@
+﻿split,partition,assigned_rows,class_0,class_1,class_2,class_1_note
+R,train,10537,2453,12,8072,unstable
+R,val,7891,1837,9,6045,unstable
+R,test,2614,608,3,2003,unstable
+G,train,10537,2304,9,8224,unstable
+G,val,7872,1943,14,5915,unstable
+G,test,2633,651,1,1981,unstable
+F,train,10537,2489,6,8042,unstable
+F,val,7891,1797,16,6078,unstable
+F,test,2614,612,2,2000,unstable
+D,train,5259,1078,8,4173,unstable
+D,val,2937,797,1,2139,unstable
+D,test,321,70,0,251,unstable
