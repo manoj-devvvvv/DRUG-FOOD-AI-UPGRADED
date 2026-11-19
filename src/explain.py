@@ -9,8 +9,9 @@ from __future__ import annotations
 import numpy as np
 
 CAVEAT = (
-    "TreeSHAP attribution shows how features change the model score for this "
-    "prediction; it is not evidence of a biological mechanism."
+    "TreeSHAP values show how features contribute to the model's raw class score, "
+    "not the calibrated probability. They are not evidence of a biological mechanism "
+    "or proof of a clinical interaction."
 )
 
 
@@ -85,6 +86,7 @@ class LocalExplainer:
             return {
                 "method": "tree_shap",
                 "predicted_class": predicted,
+                "predicted_label": by_class[predicted]["label"],
                 "feature_count": len(ordered),
                 "features": ordered,
                 "top_features": ordered[:top_k],

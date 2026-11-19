@@ -436,8 +436,14 @@ class DFIRecommender:
                 "Diagnostic TreeSHAP only: this pair is not answered, so no class is "
                 "predicted; the attributions show how the model would read the structure."
             )
+        if context.get("explainability") is None:
+            note = (
+                "The model could score this pair, but TreeSHAP did not return feature "
+                "attributions for this input."
+            )
         return {
             "available": True,
+            "shap_available": context.get("explainability") is not None,
             "role": role,
             "answer_source": answer_source,
             "compound": compound,
@@ -449,6 +455,7 @@ class DFIRecommender:
             "model": context["model"],
             "applicability_domain": context["applicability_domain"],
             "calibration": context["calibration"],
+            "explainability": context.get("explainability"),
             "note": note,
         }
 

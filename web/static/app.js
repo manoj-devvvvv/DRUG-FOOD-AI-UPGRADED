@@ -220,59 +220,161 @@ function renderResult(data) {
     root.append(el("p", "result-note", "This drug was not represented in the model's training labels."));
   }
 
-  // Keep multi-compound details available on demand, not in the main result.
-  if (Array.isArray(data.candidates) && data.candidates.length > 1) {
-    const details = el("details", "candidate-details");
-    details.append(el("summary", null, `View ${data.candidates.length} matched compounds`));
-    const list = el("div", "candidate-list");
-    data.candidates.forEach((candidate) => {
-      const label = candidate.label || "Not scored";
-      const confidence = typeof candidate.confidence === "number"
-        ? ` · ${pct(candidate.confidence)}` : "";
-      list.append(el("p", "candidate-item", `${candidate.compound} — ${label}${confidence}`));
-    });
-    details.append(list);
-    root.append(details);
-  }
-
-  renderShap(root, data);
+  // Every matched compound gets its own visible explanation, not just the selected one.
+  renderCandidateExplanations(root, data);
   root.append(disclaimerStrip(data.disclaimer));
 }
 
-function shapRows(features) {
+function shapRows(features, limit = 8) {
   const box = el("div", "shap-rows");
-  const maxAbs = Math.max(...features.map((f) => Math.abs(f.shap_value)), 1e-9);
-  features.forEach((f) => {
+  const visible = features.slice(0, limit);
+  const maxAbs = Math.max(...visible.map((f) => Math.abs(Number(f.shap_value) || 0)), 1e-9);
+  visible.forEach((f) => {
+    const value = Number(f.shap_value);
+    if (!Number.isFinite(value)) return;
     const row = el("div", "shap-row");
-    row.append(el("span", "shap-name", f.feature));
+    const name = el("span", "shap-name", f.feature || "Feature");
+    name.title = `${f.feature || "Feature"} · input value: ${f.value ?? "not supplied"}`;
+    row.append(name);
     const track = el("div", "shap-track");
     const fill = el("div", "shap-fill");
-    fill.style.width = `${Math.max((Math.abs(f.shap_value) / maxAbs) * 100, 2)}%`;
-    fill.dataset.direction = f.direction;
+    fill.style.width = `${Math.max((Math.abs(value) / maxAbs) * 100, value === 0 ? 0 : 2)}%`;
+    fill.dataset.direction = value >= 0 ? "increases" : "decreases";
     track.append(fill);
     row.append(track);
-    row.append(el("span", "shap-value", `${f.shap_value >= 0 ? "+" : ""}${f.shap_value.toFixed(3)}`));
+    row.append(el("span", "shap-value", `${value >= 0 ? "+" : ""}${value.toFixed(3)}`));
     box.append(row);
   });
   return box;
 }
 
-function renderShap(root, data) {
-  const explanation = data.explainability;
-  if (!explanation) return;
-  const features = Array.isArray(explanation.top_features) && explanation.top_features.length
-    ? explanation.top_features
-    : (Array.isArray(explanation.features) ? explanation.features.slice(0, 6) : []);
-  if (!features.length) return;
+function shapFeatureList(explanation) {
+  if (!explanation || typeof explanation !== "object") return [];
+  if (Array.isArray(explanation.top_features) && explanation.top_features.length) {
+    return explanation.top_features;
+  }
+  return Array.isArray(explanation.features) ? explanation.features : [];
+}
 
-  const details = el("details", "explain-details");
-  details.append(el("summary", null, "Why did the model score it this way?"));
-  const body = el("div", "shap");
-  body.append(shapRows(features));
-  body.append(el("p", "shap-caveat", explanation.caveat ||
-    "Feature contributions explain the model score, not a biological mechanism."));
-  details.append(body);
-  root.append(details);
+function createShapPanel(explanation, options = {}) {
+  const {
+    title = "SHAP feature contributions",
+    note = "",
+    emptyMessage = "The model did not return SHAP attributions for this pair.",
+    compact = false,
+  } = options;
+  const panel = el("section", compact ? "shap shap-compact" : "shap shap-panel");
+  const header = el("div", "shap-heading");
+  const heading = el("h4", null, title);
+  header.append(heading);
+  if (explanation?.method) header.append(el("span", "shap-method", "TreeSHAP"));
+  panel.append(header);
+
+  const features = shapFeatureList(explanation);
+  if (features.length) {
+    const label = explanation.predicted_label || explanation.label;
+    if (label) panel.append(el("p", "shap-class-label", `Contributions for: ${label}`));
+    panel.append(shapRows(features, compact ? 6 : 8));
+    if (explanation.feature_count) {
+      panel.append(el("p", "shap-scale-note", `Showing the ${Math.min(features.length, compact ? 6 : 8)} strongest of ${explanation.feature_count} features. Bar lengths are relative within this explanation; signed SHAP values are shown at right.`));
+    }
+
+    const byClass = explanation.by_class;
+    if (!compact && byClass && typeof byClass === "object") {
+      const otherClasses = Object.entries(byClass).filter(([key]) =>
+        Number(key) !== Number(explanation.predicted_class)
+      );
+      if (otherClasses.length) {
+        const more = el("details", "shap-other-classes");
+        more.append(el("summary", null, "Compare SHAP contributions for the other classes"));
+        otherClasses.forEach(([, classData]) => {
+          const group = el("div", "shap-other-class");
+          group.append(el("p", "shap-class-label", classData.label || "Other class"));
+          const rows = Array.isArray(classData.contributions) ? classData.contributions : [];
+          if (rows.length) group.append(shapRows(rows, 5));
+          more.append(group);
+        });
+        panel.append(more);
+      }
+    }
+  } else {
+    panel.append(el("p", "shap-unavailable", emptyMessage));
+  }
+
+  if (note) panel.append(el("p", "shap-context-note", note));
+  panel.append(el("p", "shap-caveat", explanation?.caveat ||
+    "SHAP explains how input features influenced the model score. It does not establish a biological mechanism or prove a clinical interaction."));
+  return panel;
+}
+
+function renderShap(root, data) {
+  const explanation = data.explainability || data.model_support?.explainability || null;
+  const support = data.model_support;
+  let note = "";
+  if (data.prediction_source === "dataset_evidence") {
+    note = "Supporting model view only: the displayed verdict comes from an existing dataset annotation, not from this SHAP explanation.";
+  } else if (data.prediction_source === "rule_based") {
+    note = "Supporting model view only: the displayed verdict comes from a curated rule, not from this SHAP explanation.";
+  } else if (support?.role === "diagnostic") {
+    note = "Diagnostic explanation only: the system did not issue an accepted prediction for this pair.";
+  }
+  let emptyMessage;
+  if (support?.available === false) {
+    emptyMessage = support.note || "The model could not score this compound, so SHAP values cannot be calculated.";
+  } else if (support?.shap_available === false) {
+    emptyMessage = support.note || "The model returned a score, but SHAP feature attributions were unavailable.";
+  } else if (data.shap_reason) {
+    emptyMessage = "SHAP is unavailable because the model could not build a valid feature vector for this input.";
+  } else {
+    emptyMessage = "No SHAP values were returned. Check that the SHAP dependency and model explainer are available.";
+  }
+  root.append(createShapPanel(explanation, { note, emptyMessage }));
+}
+
+function renderCandidateExplanations(root, data) {
+  if (!Array.isArray(data.candidates) || data.candidates.length < 2) {
+    renderShap(root, data);
+    return;
+  }
+
+  const section = el("section", "candidate-predictions");
+  const header = el("div", "candidate-predictions-head");
+  header.append(el("h3", null, "Compound-level explanations"));
+  header.append(el("span", "candidate-count", `${data.candidates.length} compounds`));
+  section.append(header);
+  section.append(el("p", "candidate-intro", "The food name matched multiple compounds. Each compound below has its own model result and SHAP contribution bars."));
+
+  data.candidates.forEach((candidate) => {
+    const card = el("article", "candidate-card");
+    const cardHead = el("div", "candidate-card-head");
+    const title = el("h4", null, candidate.compound || "Matched compound");
+    cardHead.append(title);
+    if (candidate.compound === data.food) cardHead.append(el("span", "candidate-selected", "Selected result"));
+    card.append(cardHead);
+
+    const meta = el("p", "candidate-meta");
+    const pieces = [candidate.label || "No class", candidate.status || null];
+    if (typeof candidate.confidence === "number") pieces.push(`${pct(candidate.confidence)} confidence`);
+    meta.textContent = pieces.filter(Boolean).join(" · ");
+    card.append(meta);
+
+    let contextNote = "";
+    if (candidate.prediction_source === "dataset_evidence") {
+      contextNote = "Supporting model view only; the class label comes from the dataset annotation.";
+    } else if (candidate.prediction_source === "rule_based") {
+      contextNote = "Supporting model view only; the class label comes from a curated rule.";
+    }
+    card.append(createShapPanel(candidate.explainability, {
+      title: "SHAP feature contributions",
+      note: contextNote,
+      emptyMessage: candidate.shap_available === false
+        ? "No SHAP attribution was returned for this compound. Check structure coverage and explainer availability."
+        : "SHAP was not available for this compound. The model may not have been able to featurize its structure.",
+      compact: true,
+    }));
+    section.append(card);
+  });
+  root.append(section);
 }
 
 function showLoading() {
