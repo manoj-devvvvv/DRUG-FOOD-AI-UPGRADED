@@ -15,6 +15,7 @@ pandas==2.3.3
 scipy==1.16.2
 joblib==1.5.2
 networkx==3.7
+requests==2.32.5
 
 # Machine Learning
 scikit-learn==1.7.2
